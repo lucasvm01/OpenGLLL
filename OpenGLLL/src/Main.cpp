@@ -43,8 +43,8 @@ int main(void) {
 	}
 	GLCall(glViewport(0, 0, WINWIDTH, WINHEIGHT));
 
-	// Setup entities
 	{
+	// Setting up entities
 		// Vertices
 		float pos[] = {
 			-0.5f, -0.5f,
@@ -53,12 +53,13 @@ int main(void) {
 			-0.5f,  0.5f
 		};
 
-		// Generate and bind a Vertex Array Object
-		unsigned int VAO;
-		GLCall(glGenVertexArrays(1, &VAO));
-		GLCall(glBindVertexArray(VAO));
+		// Indices of the positions in order of drawing
+		unsigned int indices[] = {
+			0, 1, 2,
+			2, 3, 0
+		};
 
-		// The constructor already binds it, so no need to call Bind()
+		// VAs, VBs and IBs
 		VertexArray VA;
 		VertexBuffer VB(pos, 4 * 2 * sizeof(float));
 
@@ -66,30 +67,15 @@ int main(void) {
 		layout.Push<float>(2);
 		VA.AddBuffer(VB, layout);
 
-
-		// Indices of the positions in order of drawing
-		unsigned int indices[] = {
-			0, 1, 2,
-			2, 3, 0
-		};
-
 		IndexBuffer IB(indices, 6);
 
 		// Create shaders
 		Shader shader(SHADERS_FILE_PATH);
-		shader.Bind();
-		shader.SetUniform4f("u_color", 0.8f, 0.0f, 0.7f, 0.5f);
-		
-		// Reset binds
-		VA.Unbind();
-		VB.Unbind();
-		IB.Unbind();
-		shader.Unbind();
 
 		// Setup logic
 
 		float r = 1.0f;
-		float i = 0.05f;
+		float i = 0.01f;
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
@@ -98,25 +84,28 @@ int main(void) {
 			// Clear window - first because of first frame
 			GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
-			// Loop logic
-
-			if (r < 1.0f) r += i;
-			else r -= i;
-
-			// Draw call
+			// Bind stuff
 			shader.Bind();
 			shader.SetUniform4f("u_color", r, 0.0f, 0.7f, 0.5f);
 
 			VA.Bind();
 			IB.Bind();
 
+			// Draw call
 			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
-			// Process events
-			GLCall(glfwPollEvents());
+			// Loop logic
+
+			if(r > 1.0f) i *= -1;
+			else if(r < 0.0f) i *= -1;
+
+			r += i;
 
 			// Swap front and back buffers - show on screen
-			GLCall(glfwSwapBuffers(window));
+			glfwSwapBuffers(window);
+
+			// Process events
+			glfwPollEvents();
 		}
 	}
 	glfwTerminate();
