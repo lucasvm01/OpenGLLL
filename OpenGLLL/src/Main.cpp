@@ -9,8 +9,10 @@
 #include"Renderer.h"
 
 #include"VertexBuffer.h"
+#include"VertexBufferLayout.h"
 #include"IndexBuffer.h"
 #include"VertexArray.h"
+#include"Texture.h"
 #include"Shader.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
@@ -47,10 +49,10 @@ int main(void) {
 	// Setting up entities
 		// Vertices
 		float pos[] = {
-			-0.5f, -0.5f,
-			 0.5f, -0.5f,
-			 0.5f,  0.5f,
-			-0.5f,  0.5f
+			-0.5f, -0.5f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 1.0f
 		};
 
 		// Indices of the positions in order of drawing
@@ -61,16 +63,27 @@ int main(void) {
 
 		// VAs, VBs and IBs
 		VertexArray VA;
-		VertexBuffer VB(pos, 4 * 2 * sizeof(float));
+		VertexBuffer VB(pos, 4 * 4 * sizeof(float));
 
 		VertexBufferLayout layout;
+		layout.Push<float>(2);
 		layout.Push<float>(2);
 		VA.AddBuffer(VB, layout);
 
 		IndexBuffer IB(indices, 6);
 
-		// Create shaders
+		// Setup shaders
 		Shader shader(SHADERS_FILE_PATH);
+		shader.Bind();
+
+		// Setup textures
+		Texture texture("res/texture/download.jpg");
+		texture.Bind();
+
+		shader.SetUniform1i("u_texture", 0);
+
+		// Setup Renderer
+		Renderer renderer;
 
 		// Setup logic
 
@@ -82,17 +95,13 @@ int main(void) {
 			// Rendering
 
 			// Clear window - first because of first frame
-			GLCall(glClear(GL_COLOR_BUFFER_BIT));
+			renderer.Clear();
 
-			// Bind stuff
-			shader.Bind();
-			shader.SetUniform4f("u_color", r, 0.0f, 0.7f, 0.5f);
-
-			VA.Bind();
-			IB.Bind();
+			//shader.Bind();
+			//shader.SetUniform4f("u_color", r, 0.0f, 1.0f, 0.5f);
 
 			// Draw call
-			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+			renderer.Draw(VA, IB, shader);
 
 			// Loop logic
 
