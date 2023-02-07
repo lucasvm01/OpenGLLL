@@ -15,7 +15,11 @@
 #include"Texture.h"
 #include"Shader.h"
 
+#include"glm/glm.hpp"
+#include"glm/gtc/matrix_transform.hpp"
+
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
+#define TEXTURES_FILE_PATH "res/texture/download.jpg"
 
 const unsigned int WINWIDTH = 640, WINHEIGHT = 480;
 
@@ -76,8 +80,12 @@ int main(void) {
 		Shader shader(SHADERS_FILE_PATH);
 		shader.Bind();
 
+		// Setup projection matrix
+		glm::mat4 proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+		shader.SetUniformMat4f("u_mvp", proj);
+
 		// Setup textures
-		Texture texture("res/texture/download.jpg");
+		Texture texture(TEXTURES_FILE_PATH);
 		texture.Bind();
 
 		shader.SetUniform1i("u_texture", 0);
@@ -87,8 +95,6 @@ int main(void) {
 
 		// Setup logic
 
-		float r = 1.0f;
-		float i = 0.01f;
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
@@ -105,10 +111,6 @@ int main(void) {
 
 			// Loop logic
 
-			if(r > 1.0f) i *= -1;
-			else if(r < 0.0f) i *= -1;
-
-			r += i;
 
 			// Swap front and back buffers - show on screen
 			glfwSwapBuffers(window);
