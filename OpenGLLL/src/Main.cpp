@@ -124,7 +124,6 @@ int main(void) {
 		bool show_another_window = false;
 		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-
 		// Setup logic
 		
 		glm::vec3 translationA(200, 200, 0);
@@ -141,6 +140,8 @@ int main(void) {
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
+
+			// Loop logic
 
 			shader.Bind();
 
@@ -167,8 +168,6 @@ int main(void) {
 				// Draw call
 				renderer.Draw(VA, IB, shader);
 			}
-
-			// Loop logic
 
 			// Simple window ImGui
 			{
