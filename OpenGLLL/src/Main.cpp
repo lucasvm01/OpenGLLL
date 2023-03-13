@@ -22,7 +22,7 @@
 #include"imgui/imgui_impl_glfw.h"
 #include"imgui/imgui_impl_opengl3.h"
 
-#include"test/TestClearColor.h"
+#include"test/Test.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
@@ -61,9 +61,8 @@ int main(void) {
 	GLCall(glViewport(0, 0, WINWIDTH, WINHEIGHT));
 
 	{
-		// Blend objects together
-		GLCall(glEnable(GL_BLEND));
-		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+	// Setting up entities
+		
 
 		// Setup Renderer
 		Renderer renderer;
@@ -77,10 +76,14 @@ int main(void) {
 		ImGui::StyleColorsDark();
 
 		// ImGui
+		bool show_demo_window = true;
+		bool show_another_window = false;
+		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
 		// Setup logic
 
-		test::TestClearColor test;
+		test::Test* current_test = nullptr;
+		test::TestMenu* test_menu = new test::TestMenu(current_test);
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
@@ -88,18 +91,29 @@ int main(void) {
 
 			// Clear window - first because of first frame
 			renderer.Clear();
-
-			// Loop logic
-			test.OnUpdate(0.0f);
-			test.OnRender();
 			
 			// Start the ImGui frame
 			ImGui_ImplOpenGL3_NewFrame();
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
+			// Loop logic
+			if (current_test) {
+				current_test->OnUpdate(0.0f);
+				current_test->OnRender();
+
+				ImGui::Begin("Test");
+
+				if (current_test != test_menu && ImGui::Button("<-")) {
+					delete current_test;
+					current_test = test_menu;
+				}
+
+				current_test->OnImGuiRender();
+				ImGui::End();
+			}
+
 			// Rendering ImGui
-			test.OnImGuiRender();
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
