@@ -22,6 +22,8 @@
 #include"imgui/imgui_impl_glfw.h"
 #include"imgui/imgui_impl_opengl3.h"
 
+#include"test/Test.h"
+
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
 
@@ -80,6 +82,9 @@ int main(void) {
 
 		// Setup logic
 
+		test::Test* current_test = nullptr;
+		test::TestMenu* test_menu = new test::TestMenu(current_test);
+
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
 			// Rendering
@@ -93,7 +98,20 @@ int main(void) {
 			ImGui::NewFrame();
 
 			// Loop logic
+			if (current_test) {
+				current_test->OnUpdate(0.0f);
+				current_test->OnRender();
 
+				ImGui::Begin("Test");
+
+				if (current_test != test_menu && ImGui::Button("<-")) {
+					delete current_test;
+					current_test = test_menu;
+				}
+
+				current_test->OnImGuiRender();
+				ImGui::End();
+			}
 
 			// Rendering ImGui
 			ImGui::Render();
