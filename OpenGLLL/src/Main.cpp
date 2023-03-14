@@ -80,10 +80,12 @@ int main(void) {
 		bool show_another_window = false;
 		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-		// Setup logic
-
+		// Test menu environment
 		test::Test* current_test = nullptr;
 		test::TestMenu* test_menu = new test::TestMenu(current_test);
+
+		// Setup logic
+
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
@@ -123,6 +125,8 @@ int main(void) {
 			// Process events
 			glfwPollEvents();
 		}
+		if (current_test != test_menu) delete test_menu;
+		delete current_test;
 	}
 
 	// Cleanup

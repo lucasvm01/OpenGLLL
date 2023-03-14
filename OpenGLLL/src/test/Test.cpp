@@ -1,4 +1,5 @@
 #include"Test.h"
+#include"../Renderer.h"
 #include"imgui/imgui.h"
 
 namespace test {
@@ -7,6 +8,13 @@ namespace test {
 		m_current_test(current_test_ptr)
 	{
 
+	}
+
+	
+
+	void TestMenu::OnRender()
+	{
+		GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
 	}
 
 	void TestMenu::OnImGuiRender()
