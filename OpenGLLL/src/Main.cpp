@@ -23,6 +23,7 @@
 #include"imgui/imgui_impl_opengl3.h"
 
 #include"test/Test.h"
+#include"test/TestClearColor.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
@@ -84,6 +85,9 @@ int main(void) {
 
 		test::Test* current_test = nullptr;
 		test::TestMenu* test_menu = new test::TestMenu(current_test);
+		current_test = test_menu;
+
+		test_menu->RegisterTest<test::TestClearColor>("Clear color");
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
@@ -110,6 +114,7 @@ int main(void) {
 				}
 
 				current_test->OnImGuiRender();
+
 				ImGui::End();
 			}
 
