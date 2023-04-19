@@ -3,17 +3,7 @@
 #include<string>
 #include<sstream>
 
-#include<GLAD/glad.h>
-#include<GLFW/glfw3.h>
-
 #include"Renderer.h"
-
-#include"VertexBuffer.h"
-#include"VertexBufferLayout.h"
-#include"IndexBuffer.h"
-#include"VertexArray.h"
-#include"Texture.h"
-#include"Shader.h"
 
 #include"imgui/imgui.h"
 #include"imgui/imgui_impl_glfw.h"
@@ -58,9 +48,6 @@ int main(void) {
 	GLCall(glViewport(0, 0, WINWIDTH, WINHEIGHT));
 
 	{
-	// Setting up entities
-		
-
 		// Setup Renderer
 		Renderer renderer;
 

@@ -1,7 +1,8 @@
 #pragma once
 
+#include "Renderer.h"
+
 #include<vector>
-#include"Renderer.h"
 
 #include <stdexcept>
 
@@ -48,6 +49,12 @@ public:
 
 	template<>
 	void Push<unsigned char>(unsigned int count) {
+		m_Elements.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
+		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE) * count;
+	}
+
+	template<>
+	void Push<glm::vec3>(unsigned int count) {
 		m_Elements.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
 		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE) * count;
 	}
