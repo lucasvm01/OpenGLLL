@@ -1,10 +1,11 @@
 #pragma once
 
 #include<GLAD/glad.h>
+#include"GLFW/glfw3.h"
 
-#include"IndexBuffer.h"
 #include"VertexArray.h"
-#include"Shader.h"
+#include"VertexBuffer.h"
+#include"IndexBuffer.h"
 
 // Macro for error checking
 #define ASSERT(x) if (!(x)) __debugbreak();
