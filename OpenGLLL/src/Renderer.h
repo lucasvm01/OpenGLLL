@@ -8,6 +8,7 @@
 #include"IndexBuffer.h"
 
 #include"Shader.h"
+#include"Texture.h"
 
 // Macro for error checking
 #define ASSERT(x) if (!(x)) __debugbreak();
