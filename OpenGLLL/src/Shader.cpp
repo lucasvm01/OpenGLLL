@@ -56,19 +56,19 @@ int Shader::CreateShader(const std::string& vertexShader, const std::string& fra
 	// Compile vertex shader
 	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
 	if (vs == 0) return -1;
-	glAttachShader(program, vs);
+	GLCall(glAttachShader(program, vs));
 
 	// Compile fragment shader
 	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
 	if (fs == 0) return -1;
-	glAttachShader(program, fs);
+	GLCall(glAttachShader(program, fs));
 
 	// Link shaders in the program
-	glLinkProgram(program);
-	glValidateProgram(program);
+	GLCall(glLinkProgram(program));
+	GLCall(glValidateProgram(program));
 
-	glDeleteShader(vs);
-	glDeleteShader(fs);
+	GLCall(glDeleteShader(vs));
+	GLCall(glDeleteShader(fs));
 
 	return program;
 }
@@ -80,24 +80,24 @@ int Shader::CompileShader(unsigned int type, const std::string& source) {
 	// Cast the string to char*
 	const char* src = source.c_str();
 	// Bind source to the shader
-	glShaderSource(id, 1, &src, nullptr);
+	GLCall(glShaderSource(id, 1, &src, nullptr));
 	// Compile it
-	glCompileShader(id);
+	GLCall(glCompileShader(id));
 
 	// Error handling
 	// Check if shader compiled succesfully
 	int result;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
+	GLCall(glGetShaderiv(id, GL_COMPILE_STATUS, &result));
 	if (result == GL_FALSE) {
 		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
+		GLCall(glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length));
 		char* message = (char*)alloca(length * sizeof(char));
-		glGetShaderInfoLog(id, length, &length, message);
+		GLCall(glGetShaderInfoLog(id, length, &length, message));
 
 		std::cout << "Failed to compile shader." << std::endl;
 		std::cout << message << std::endl;
 
-		glDeleteShader(id);
+		GLCall(glDeleteShader(id));
 		return 0;
 	}
 

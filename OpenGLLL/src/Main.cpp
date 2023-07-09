@@ -23,6 +23,7 @@
 #include"imgui/imgui_impl_opengl3.h"
 
 #include"test/Test.h"
+#include"test/MovingSquaresTest.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
@@ -75,17 +76,16 @@ int main(void) {
 		ImGui_ImplOpenGL3_Init(glsl_version);
 		ImGui::StyleColorsDark();
 
-		// ImGui
-		bool show_demo_window = true;
-		bool show_another_window = false;
-		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
 		// Test menu environment
 		test::Test* current_test = nullptr;
 		test::TestMenu* test_menu = new test::TestMenu(current_test);
 
-		// Setup logic
+		current_test = test_menu;
 
+		test_menu->RegisterTest<test::MovingSquaresTest>("Moving squares");
+		
+		
+		// Setup logic
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
