@@ -9,12 +9,13 @@
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
 
 namespace test {
-	MovingSquaresTest::MovingSquaresTest() :
+	MovingSquaresTest::MovingSquaresTest(GLFWwindow* window) :
 	m_translationA(200, 200, 0),
 	m_translationB(400, 200, 0),
 	m_proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f)),
 	m_view(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
-	m_time(0) {
+	m_time(0),
+	m_window(window), Test(window){
 		// Vertices
 		float pos[] = {
 			-50.0f, -50.0f, 0.0f, 0.0f,

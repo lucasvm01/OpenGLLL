@@ -70,11 +70,11 @@ int main(void) {
 
 		// Test menu environment
 		test::Test* current_test = nullptr;
-		test::TestMenu* test_menu = new test::TestMenu(current_test);
+		test::TestMenu* test_menu = new test::TestMenu(current_test, window);
 
 		current_test = test_menu;
 
-		test_menu->RegisterTest<test::MovingSquaresTest>("Moving squares");
+		test_menu->RegisterTest<test::MovingSquaresTest, window>("Moving squares");
 		
 		
 		// Setup logic

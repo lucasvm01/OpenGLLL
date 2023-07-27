@@ -7,7 +7,7 @@
 namespace test {
 	class MovingSquaresTest : public Test {
 	public:
-		MovingSquaresTest();
+		MovingSquaresTest(GLFWwindow* window);
 		virtual ~MovingSquaresTest() {}
 
 		virtual void OnUpdate(float deltaTime) override {}
@@ -29,5 +29,7 @@ namespace test {
 		glm::vec3 m_translationB;
 		glm::mat4 m_proj;
 		glm::mat4 m_view;
+
+		GLFWwindow* m_window;
 	};
 }
