@@ -11,7 +11,7 @@
 namespace test {
 	class Test {
 	public:
-		Test(GLFWwindow* window){}
+		Test(){}
 		virtual ~Test(){}
 
 		virtual void OnUpdate(float deltaTime){}
@@ -21,16 +21,16 @@ namespace test {
 
 	class TestMenu : public Test {
 	public:
-		TestMenu(Test*& current_test_ptr, GLFWwindow* window);
+		TestMenu(Test*& current_test_ptr);
 
 		virtual void OnRender() override;
 		virtual void OnImGuiRender() override;
 
-		template<typename T, GLFWwindow* window>
+		template<typename T>
 		void RegisterTest(const std::string& name) {
 			std::cout << "Registering test " << name << std::endl;
 
-			m_tests.push_back(std::make_pair(name, []() { return new T(window); }));
+			m_tests.push_back(std::make_pair(name, []() { return new T(); }));
 		}
 	private:
 		Test*& m_current_test;
