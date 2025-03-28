@@ -60,6 +60,7 @@ int main(void) {
 		// Setup Renderer
 		Renderer renderer;
 
+
 		// Setup ImGui
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -93,7 +94,7 @@ int main(void) {
 
 			// Loop logic
 			if (current_test) {
-				current_test->OnUpdate(0.0f);
+				//current_test->OnUpdate(0.0f);
 				current_test->OnRender();
 
 				ImGui::Begin("Test");

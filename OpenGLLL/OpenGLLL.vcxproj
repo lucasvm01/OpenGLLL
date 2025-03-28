@@ -141,6 +141,8 @@
   <ItemGroup>
     <ClCompile Include="Dependencies\GL\GLAD\source\glad\glad.c" />
     <ClCompile Include="src\IndexBuffer.cpp" />
+    <ClCompile Include="src\KeyHandler.cpp" />
+    <ClCompile Include="src\KeyHandler.h" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />

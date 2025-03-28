@@ -17,6 +17,7 @@ namespace test {
 		float m_time;
 
 		Renderer m_renderer;
+		KeyHandler m_keyHandler;
 
 		std::unique_ptr<VertexArray> m_VAO;
 		std::unique_ptr<VertexBuffer> m_VBO;

@@ -6,7 +6,7 @@
 #include"glm/gtc/matrix_transform.hpp"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
-#define TEXTURES_FILE_PATH "res/texture/download.jpg"
+#define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
 
 namespace test {
 	MovingSquaresTest::MovingSquaresTest() :
@@ -50,17 +50,12 @@ namespace test {
 
 		m_shader->SetUniform1i("u_texture", 0);
 
-		// Setup translation matrices
-		m_translationA = glm::vec3(200, 200, 0);
-		m_translationB = glm::vec3(400, 200, 0);
+		m_keyHandler.KeyCallback();
 	}
 
 	void MovingSquaresTest::OnRender() {
 		GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
 		GLCall(glClear(GL_COLOR_BUFFER_BIT));
-
-		// Rendering
-		Renderer renderer;
 
 		// Clear window - first because of first frame
 		m_renderer.Clear();
@@ -77,6 +72,13 @@ namespace test {
 		m_view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 
 		{
+			for (int key : m_keyHandler.PressedKeys()) {
+				switch (key) {
+					case GLFW_KEY_W:
+						m_translationA = glm::vec3(0.2f, 0.0f, 0.0f) + m_translationA;
+				}
+			}
+
 			// Setup model matrix
 			glm::mat4 model = glm::translate(glm::mat4(1.0f), m_translationA);
 
@@ -86,7 +88,7 @@ namespace test {
 			m_shader->SetUniformMat4f("u_mvp", mvp);
 
 			// Draw call
-			renderer.Draw(*m_VAO, *m_IBO, *m_shader);
+			m_renderer.Draw(*m_VAO, *m_IBO, *m_shader);
 		}
 
 		{
@@ -99,7 +101,7 @@ namespace test {
 			m_shader->SetUniformMat4f("u_mvp", mvp);
 
 			// Draw call
-			renderer.Draw(*m_VAO, *m_IBO, *m_shader);
+			m_renderer.Draw(*m_VAO, *m_IBO, *m_shader);
 		}
 	}
 	void MovingSquaresTest::OnImGuiRender() {

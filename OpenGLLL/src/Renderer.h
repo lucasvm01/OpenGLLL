@@ -6,6 +6,7 @@
 #include"VertexArray.h"
 #include"VertexBuffer.h"
 #include"IndexBuffer.h"
+#include"KeyHandler.h"
 
 #include"Shader.h"
 #include"Texture.h"

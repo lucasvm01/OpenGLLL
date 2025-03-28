@@ -8,6 +8,8 @@
 #include<string>
 #include<functional>
 
+#include"../KeyHandler.h"
+
 namespace test {
 	class Test {
 	public:
