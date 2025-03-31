@@ -1,6 +1,12 @@
 #pragma once
 
-#include"Test.h"
+#include"../Test.h"
+#include "Entities/Mesh.h"
+
+#include"../VertexBufferLayout.h"
+
+#include"glm/glm.hpp"
+#include"glm/gtc/matrix_transform.hpp"
 
 #include<memory>
 
@@ -19,12 +25,7 @@ namespace test {
 		Renderer m_renderer;
 		KeyHandler m_keyHandler;
 
-		std::unique_ptr<VertexArray> m_VAO;
-		std::unique_ptr<VertexBuffer> m_VBO;
-		std::unique_ptr<IndexBuffer> m_IBO;
-
-		std::unique_ptr<Shader> m_shader;
-		std::unique_ptr<Texture> m_texture;
+		Mesh Square;
 
 		glm::vec3 m_translationA;
 		glm::vec3 m_translationB;

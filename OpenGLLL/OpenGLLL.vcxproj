@@ -142,14 +142,12 @@
     <ClCompile Include="Dependencies\GL\GLAD\source\glad\glad.c" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\KeyHandler.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="src\KeyHandler.h" />
-=======
->>>>>>> 44bc98a7bced9e7156218e72899063c4c7176f86
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\test\MovingSquaresTest.cpp" />
+    <ClCompile Include="src\test\MovingSquares\Entities\BaseEntity.cpp" />
+    <ClCompile Include="src\test\MovingSquares\Entities\Mesh.cpp" />
+    <ClCompile Include="src\test\MovingSquares\MovingSquaresTest.cpp" />
     <ClCompile Include="src\test\Test.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
@@ -173,7 +171,10 @@
     <ClInclude Include="src\KeyHandler.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\test\MovingSquaresTest.h" />
+    <ClInclude Include="src\test\MovingSquares\Entities\BaseEntity.h" />
+    <ClInclude Include="src\test\MovingSquares\Entities\Mesh.h" />
+    <ClInclude Include="src\test\MovingSquares\Entities\Triangle.h" />
+    <ClInclude Include="src\test\MovingSquares\MovingSquaresTest.h" />
     <ClInclude Include="src\test\Test.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />

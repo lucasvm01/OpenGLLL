@@ -16,7 +16,7 @@
 #include"imgui/imgui_impl_opengl3.h"
 
 #include"test/Test.h"
-#include"test/MovingSquaresTest.h"
+#include"test/MovingSquares/MovingSquaresTest.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
