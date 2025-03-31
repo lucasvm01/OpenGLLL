@@ -7,6 +7,7 @@
 #include<GLFW/glfw3.h>
 
 #include"Renderer.h"
+#include"KeyHandler.h"
 
 #include"VertexBufferLayout.h"
 

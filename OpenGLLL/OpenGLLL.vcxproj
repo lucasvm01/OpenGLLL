@@ -142,7 +142,10 @@
     <ClCompile Include="Dependencies\GL\GLAD\source\glad\glad.c" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\KeyHandler.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="src\KeyHandler.h" />
+=======
+>>>>>>> 44bc98a7bced9e7156218e72899063c4c7176f86
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
@@ -167,6 +170,7 @@
     <ClInclude Include="Dependencies\GL\GLFW\include\GLFW\glfw3.h" />
     <ClInclude Include="Dependencies\GL\GLFW\include\GLFW\glfw3native.h" />
     <ClInclude Include="src\IndexBuffer.h" />
+    <ClInclude Include="src\KeyHandler.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\test\MovingSquaresTest.h" />
