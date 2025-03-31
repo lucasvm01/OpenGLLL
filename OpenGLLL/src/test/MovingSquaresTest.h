@@ -10,7 +10,7 @@ namespace test {
 		MovingSquaresTest();
 		virtual ~MovingSquaresTest() {}
 
-		virtual void OnUpdate(float deltaTime) override {}
+		virtual void OnUpdate(float deltaTime) override;
 		virtual void OnRender() override;
 		virtual void OnImGuiRender() override;
 	private:
@@ -28,6 +28,7 @@ namespace test {
 
 		glm::vec3 m_translationA;
 		glm::vec3 m_translationB;
+		float m_speed;
 		glm::mat4 m_proj;
 		glm::mat4 m_view;
 	};

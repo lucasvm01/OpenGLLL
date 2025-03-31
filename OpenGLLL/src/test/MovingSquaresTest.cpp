@@ -14,7 +14,7 @@ namespace test {
 	m_translationB(400, 200, 0),
 	m_proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f)),
 	m_view(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
-	m_time(0)
+	m_time(0), m_speed(0.5f)
 	{
 		// Vertices
 		float pos[] = {
@@ -49,8 +49,10 @@ namespace test {
 		m_texture->Bind();
 
 		m_shader->SetUniform1i("u_texture", 0);
+	}
 
-		m_keyHandler.KeyCallback();
+	void MovingSquaresTest::OnUpdate(float deltaTime)
+	{
 	}
 
 	void MovingSquaresTest::OnRender() {
@@ -71,11 +73,23 @@ namespace test {
 		// Setup view matrix
 		m_view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 
+		m_keyHandler.KeyCallback();
+
 		{
 			for (int key : m_keyHandler.PressedKeys()) {
 				switch (key) {
 					case GLFW_KEY_W:
-						m_translationA = glm::vec3(0.2f, 0.0f, 0.0f) + m_translationA;
+						m_translationA = glm::vec3(0.0f, m_speed, 0.0f) + m_translationA;
+						break;
+					case GLFW_KEY_S:
+						m_translationA = glm::vec3(0.0f, -m_speed, 0.0f) + m_translationA;
+						break;
+					case GLFW_KEY_A:
+						m_translationA = glm::vec3(-m_speed, 0.0f, 0.0f) + m_translationA;
+						break;
+					case GLFW_KEY_D:
+						m_translationA = glm::vec3(m_speed, 0.0f, 0.0f) + m_translationA;
+						break;
 				}
 			}
 
@@ -92,6 +106,22 @@ namespace test {
 		}
 
 		{
+			for (int key : m_keyHandler.PressedKeys()) {
+				switch (key) {
+				case GLFW_KEY_UP:
+					m_translationB = glm::vec3(0.0f, m_speed, 0.0f) + m_translationB;
+					break;
+				case GLFW_KEY_DOWN:
+					m_translationB = glm::vec3(0.0f, -m_speed, 0.0f) + m_translationB;
+					break;
+				case GLFW_KEY_LEFT:
+					m_translationB = glm::vec3(-m_speed, 0.0f, 0.0f) + m_translationB;
+					break;
+				case GLFW_KEY_RIGHT:
+					m_translationB = glm::vec3(m_speed, 0.0f, 0.0f) + m_translationB;
+					break;
+				}
+			}
 			// Setup model matrix
 			glm::mat4 model = glm::translate(glm::mat4(1.0f), m_translationB);
 
@@ -107,6 +137,7 @@ namespace test {
 	void MovingSquaresTest::OnImGuiRender() {
 		ImGui::SliderFloat3("Translation A: ", &m_translationA.x, 0.0f, 960.0f);
 		ImGui::SliderFloat3("Translation B: ", &m_translationB.x, 0.0f, 960.0f);
+		ImGui::SliderFloat3("Speed: ", &m_speed, 0.0f, 10.0f);
 		ImGui::Text("AVG Framerate: ¨.3f ms/f (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}
 }

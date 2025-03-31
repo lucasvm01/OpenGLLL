@@ -15,7 +15,7 @@ class KeyHandler {
 	public:
 		void KeyCallback();
 
-		int GetKey(int key);
+		int GetKeyState(int key);
 
 		bool IsKeyPressed();
 		std::vector<int> PressedKeys();
