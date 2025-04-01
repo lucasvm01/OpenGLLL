@@ -9,7 +9,6 @@
 #include"KeyHandler.h"
 
 #include"Shader.h"
-#include"Texture.h"
 
 // Macro for error checking
 #define ASSERT(x) if (!(x)) __debugbreak();
@@ -21,5 +20,6 @@ bool GLLogCall(const char* function, const char* file, int line);
 class Renderer {
 public:
 	void Draw(const VertexArray& VA, const IndexBuffer& IB, const Shader& shader) const;
+	//void Draw(Mesh mesh) const;
 	void Clear() const;
 };

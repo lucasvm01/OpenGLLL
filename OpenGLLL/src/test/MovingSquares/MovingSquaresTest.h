@@ -1,7 +1,6 @@
 #pragma once
 
 #include"../Test.h"
-#include "Entities/Mesh.h"
 
 #include"../VertexBufferLayout.h"
 
@@ -9,6 +8,7 @@
 #include"glm/gtc/matrix_transform.hpp"
 
 #include<memory>
+#include "../../Mesh.h"
 
 namespace test {
 	class MovingSquaresTest : public Test {
@@ -25,7 +25,8 @@ namespace test {
 		Renderer m_renderer;
 		KeyHandler m_keyHandler;
 
-		Mesh Square;
+		Mesh SquareA;
+		Mesh SquareB;
 
 		glm::vec3 m_translationA;
 		glm::vec3 m_translationB;

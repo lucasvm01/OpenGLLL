@@ -26,6 +26,10 @@ void Renderer::Draw(const VertexArray& VA, const IndexBuffer& IB, const Shader& 
 
 }
 
+//void Renderer::Draw(Mesh mesh) const
+//{
+//}
+
 void Renderer::Clear() const
 {
 	GLCall(glClear(GL_COLOR_BUFFER_BIT));
