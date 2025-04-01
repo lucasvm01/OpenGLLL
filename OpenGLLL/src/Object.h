@@ -18,7 +18,7 @@
 class Object {
 public:
 
-	void SetPositionVertices(float* data); // GetObject() from file?
+	void SetPositionVertices(float* vertices, unsigned int* indices); // GetObject() from file?
 	void DefineProperties();
 
 	void SetShader(std::string shader_path);

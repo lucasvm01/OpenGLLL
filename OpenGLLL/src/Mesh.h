@@ -8,9 +8,7 @@
 class Mesh {
 public:
 public:
-	void SetPositionVertices(float* data);
-
-	void ProcessVertices();
+	void SetVerticesProperties(float* vertices, unsigned int* indices);
 
 	float* m_vertices;
 	unsigned int* m_indices;
