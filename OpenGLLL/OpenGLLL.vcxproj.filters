@@ -1007,6 +1007,12 @@
     <ClCompile Include="src\VertexBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Object.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1421,6 +1427,7 @@
     <None Include="x64\Debug\OpenGLLL.exe.recipe" />
     <None Include="x64\Debug\vc143.idb" />
     <None Include="x64\Debug\vc143.pdb" />
+    <None Include="res\shader\Basic.shader" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="x64\Debug\glad.obj" />
@@ -1439,5 +1446,16 @@
     <Text Include="x64\Debug\OpenGLLL.Build.CppClean.log" />
     <Text Include="x64\Debug\OpenGLLL.log" />
     <Text Include="x64\Debug\OpenGLLL.vcxproj.FileListAbsolute.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\texture\Cleiton.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\OMG.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\texture\download.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

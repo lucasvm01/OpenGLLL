@@ -2,13 +2,12 @@
 
 #include"../Test.h"
 
-#include"../VertexBufferLayout.h"
+#include"../Object.h"
+
+#include<memory>
 
 #include"glm/glm.hpp"
 #include"glm/gtc/matrix_transform.hpp"
-
-#include<memory>
-#include "../../Mesh.h"
 
 namespace test {
 	class MovingSquaresTest : public Test {
@@ -25,8 +24,8 @@ namespace test {
 		Renderer m_renderer;
 		KeyHandler m_keyHandler;
 
-		Mesh SquareA;
-		Mesh SquareB;
+		Object SquareA;
+		Object SquareB;
 
 		glm::vec3 m_translationA;
 		glm::vec3 m_translationB;

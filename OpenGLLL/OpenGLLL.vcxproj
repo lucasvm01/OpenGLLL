@@ -334,6 +334,8 @@
     <ClCompile Include="src\KeyHandler.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Object.cpp" />
+    <ClCompile Include="src\Object.h" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\test\MovingSquares\MovingSquaresTest.cpp" />
@@ -354,6 +356,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />
+    <None Include="res\shader\Basic.shader" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />
@@ -511,6 +514,11 @@
     <Text Include="x64\Debug\OpenGLLL.Build.CppClean.log" />
     <Text Include="x64\Debug\OpenGLLL.log" />
     <Text Include="x64\Debug\OpenGLLL.vcxproj.FileListAbsolute.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\texture\Cleiton.jpg" />
+    <Image Include="res\texture\download.jpg" />
+    <Image Include="res\texture\OMG.jpg" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -17,14 +17,18 @@ namespace test {
 			-50.0f,  50.0f, 0.0f, 1.0f
 		};
 
+
 		SquareA.SetPositionVertices(pos);
 		SquareB.SetPositionVertices(pos);
 
-		// Indices of positions in order of drawing
-		unsigned int indices[] = {
-			0, 1, 2,
-			2, 3, 0
-		};
+		SquareA.DefineProperties();
+		SquareB.DefineProperties();
+
+		//// Indices of positions in order of drawing
+		//unsigned int indices[] = {
+		//	0, 1, 2,
+		//	2, 3, 0
+		//};
 
 		GLCall(glEnable(GL_BLEND));
 		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
@@ -36,9 +40,7 @@ namespace test {
 		//layout.Push<float>(2); // ?? Local coords?
 		//m_VAO->AddBuffer(*m_VBO, layout);
 		//m_IBO = std::make_unique<IndexBuffer>(indices, 6);
-		SquareA.ProcessVertices();
-		SquareB.ProcessVertices();
-
+		
 		/*m_shader = std::make_unique<Shader>(SHADERS_FILE_PATH);
 		m_shader->Bind();*/
 		//m_shader->SetUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
@@ -98,7 +100,7 @@ namespace test {
 
 			// Draw call
 			// m_renderer.Draw(*m_VAO, *m_IBO, *m_shader);
-			m_renderer.Draw(*SquareA.m_VAO, *SquareA.m_IBO, *SquareA.m_shader);
+			SquareA.Draw(m_renderer);
 		}
 
 		//{
@@ -154,12 +156,12 @@ namespace test {
 
 			// Draw call
 			// m_renderer.Draw(*m_VAO, *m_IBO, *m_shader);
-			m_renderer.Draw(*SquareB.m_VAO, *SquareB.m_IBO, *SquareB.m_shader);
+			SquareB.Draw(m_renderer);
 		}
 	}
 	void MovingSquaresTest::OnImGuiRender() {
-		ImGui::SliderFloat3("Translation A: ", &m_translationA.x, 0.0f, 960.0f);
-		ImGui::SliderFloat3("Translation B: ", &m_translationB.x, 0.0f, 960.0f);
+		ImGui::SliderFloat3("Translation A: ", &SquareA.m_translation.x, 0.0f, 960.0f);
+		ImGui::SliderFloat3("Translation B: ", &SquareB.m_translation.x, 0.0f, 960.0f);
 		ImGui::SliderFloat3("Speed: ", &m_speed, 0.0f, 10.0f);
 		ImGui::Text("AVG Framerate: ¨.3f ms/f (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}
