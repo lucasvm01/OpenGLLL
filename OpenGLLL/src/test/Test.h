@@ -1,9 +1,14 @@
 #pragma once
 
+#include"../Renderer.h"
+#include"imgui/imgui.h"
+
 #include<iostream>
 #include<vector>
 #include<string>
 #include<functional>
+
+#include"../KeyHandler.h"
 
 namespace test {
 	class Test {
@@ -20,6 +25,7 @@ namespace test {
 	public:
 		TestMenu(Test*& current_test_ptr);
 
+		virtual void OnRender() override;
 		virtual void OnImGuiRender() override;
 
 		template<typename T>

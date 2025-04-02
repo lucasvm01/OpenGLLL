@@ -17,7 +17,7 @@ void VertexArray::AddBuffer(const VertexBuffer& VB, const VertexBufferLayout& la
 	VB.Bind();
 	const auto& elements = layout.GetElements();
 	unsigned int offset = 0;
-	for (unsigned int i = 0; i < elements.size(); i++) {
+	for (unsigned int i =	 0; i < elements.size(); i++) {
 		const auto& element = elements[i];
 
 		// Define and enable an attribute to the vertex (position - x, y - and others)

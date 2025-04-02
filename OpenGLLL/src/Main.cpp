@@ -7,23 +7,20 @@
 #include<GLFW/glfw3.h>
 
 #include"Renderer.h"
+#include"KeyHandler.h"
 
-#include"VertexBuffer.h"
 #include"VertexBufferLayout.h"
-#include"IndexBuffer.h"
-#include"VertexArray.h"
-#include"Texture.h"
-#include"Shader.h"
-
-#include"glm/glm.hpp"
-#include"glm/gtc/matrix_transform.hpp"
 
 #include"imgui/imgui.h"
 #include"imgui/imgui_impl_glfw.h"
 #include"imgui/imgui_impl_opengl3.h"
 
 #include"test/Test.h"
+<<<<<<< HEAD
 #include"test/TestClearColor.h"
+=======
+#include"test/MovingSquares/MovingSquaresTest.h"
+>>>>>>> 1713c4f1dd8d399d3aa487dc90b6c18c24541c81
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
@@ -68,6 +65,7 @@ int main(void) {
 		// Setup Renderer
 		Renderer renderer;
 
+
 		// Setup ImGui
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -76,18 +74,19 @@ int main(void) {
 		ImGui_ImplOpenGL3_Init(glsl_version);
 		ImGui::StyleColorsDark();
 
-		// ImGui
-		bool show_demo_window = true;
-		bool show_another_window = false;
-		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-		// Setup logic
-
+		// Test menu environment
 		test::Test* current_test = nullptr;
 		test::TestMenu* test_menu = new test::TestMenu(current_test);
 		current_test = test_menu;
 
 		test_menu->RegisterTest<test::TestClearColor>("Clear color");
+
+		current_test = test_menu;
+
+		test_menu->RegisterTest<test::MovingSquaresTest>("Moving squares");
+		
+		
+		// Setup logic
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
@@ -128,6 +127,8 @@ int main(void) {
 			// Process events
 			glfwPollEvents();
 		}
+		if (current_test != test_menu) delete test_menu;
+		delete current_test;
 	}
 
 	// Cleanup
