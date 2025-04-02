@@ -16,11 +16,8 @@
 #include"imgui/imgui_impl_opengl3.h"
 
 #include"test/Test.h"
-<<<<<<< HEAD
-#include"test/TestClearColor.h"
-=======
+#include"test/ClearColor/TestClearColor.h"
 #include"test/MovingSquares/MovingSquaresTest.h"
->>>>>>> 1713c4f1dd8d399d3aa487dc90b6c18c24541c81
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
