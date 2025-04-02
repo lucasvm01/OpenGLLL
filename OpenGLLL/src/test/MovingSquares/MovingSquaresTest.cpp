@@ -1,12 +1,7 @@
 #include"MovingSquaresTest.h"
 
-#define SHADERS_FILE_PATH "res/shader/Basic.shader"
-#define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
-
 namespace test {
 	MovingSquaresTest::MovingSquaresTest() :
-	m_translationA(200, 200, 0),
-	m_translationB(400, 200, 0),
 	m_time(0), m_speed(2.0f)
 	{
 		// Vertices
@@ -49,12 +44,6 @@ namespace test {
 		SquareB.m_shader->Bind();
 		SquareB.m_texture->Bind();
 
-		//// Setup projection matrix
-		//m_proj = glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f);
-
-		//// Setup view matrix
-		//m_view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-
 		m_keyHandler.KeyCallback();
 
 		{
@@ -80,38 +69,8 @@ namespace test {
 			SquareA.Move();
 
 			// Draw call
-			// m_renderer.Draw(*m_VAO, *m_IBO, *m_shader);
 			SquareA.Draw(m_renderer);
 		}
-
-		//{
-		//	for (int key : m_keyHandler.PressedKeys()) {
-		//		switch (key) {
-		//		case GLFW_KEY_UP:
-		//			m_translationB = glm::vec3(0.0f, m_speed, 0.0f) + m_translationB;
-		//			break;
-		//		case GLFW_KEY_DOWN:
-		//			m_translationB = glm::vec3(0.0f, -m_speed, 0.0f) + m_translationB;
-		//			break;
-		//		case GLFW_KEY_LEFT:
-		//			m_translationB = glm::vec3(-m_speed, 0.0f, 0.0f) + m_translationB;
-		//			break;
-		//		case GLFW_KEY_RIGHT:
-		//			m_translationB = glm::vec3(m_speed, 0.0f, 0.0f) + m_translationB;
-		//			break;
-		//		}
-		//	}
-		//	// Setup model matrix
-		//	glm::mat4 model = glm::translate(glm::mat4(1.0f), m_translationB);
-
-		//	// Set mvp matrix
-		//	glm::mat4 mvp = m_proj * m_view * model;
-
-		//	SquareB.m_shader->SetUniformMat4f("u_mvp", mvp);
-
-		//	// Draw call
-		//	m_renderer.Draw(*SquareB.m_VAO, *SquareB.m_IBO, *SquareB.m_shader);
-		//}
 
 		{
 			SquareB.SetSpeed(m_speed);
@@ -136,14 +95,13 @@ namespace test {
 			SquareB.Move();
 
 			// Draw call
-			// m_renderer.Draw(*m_VAO, *m_IBO, *m_shader);
 			SquareB.Draw(m_renderer);
 		}
 	}
 	void MovingSquaresTest::OnImGuiRender() {
 		ImGui::SliderFloat3("Translation A: ", &SquareA.m_translation.x, 0.0f, 960.0f);
 		ImGui::SliderFloat3("Translation B: ", &SquareB.m_translation.x, 0.0f, 960.0f);
-		ImGui::SliderFloat3("Speed: ", &m_speed, 0.0f, 10.0f);
+		ImGui::SliderFloat("Speed: ", &m_speed, 0.0f, 10.0f);
 		ImGui::Text("AVG Framerate: ¨.3f ms/f (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	}
 }

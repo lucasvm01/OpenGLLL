@@ -26,11 +26,6 @@ namespace test {
 
 		Object SquareA;
 		Object SquareB;
-
-		glm::vec3 m_translationA;
-		glm::vec3 m_translationB;
 		float m_speed;
-		glm::mat4 m_proj;
-		glm::mat4 m_view;
 	};
 }
