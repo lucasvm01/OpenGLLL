@@ -1,14 +1,16 @@
-#define PI 3.1415926535897931
-#define SHADERS_FILE_PATH "res/shader/Basic.shader"
+
 
 #include"CubeRotationTest.h"
-#include"../VertexBufferLayout.h"
+#include"../../VertexBufferLayout.h"
 
 #include<cmath>
 
+#define PI 3.1415926535897931
+#define SHADERS_FILE_PATH "res/shader/Basic.shader"
+
 namespace test {
 	CubeRotationTest::CubeRotationTest(GLFWwindow* window) :
-		m_window(window), m_elapsedTime(0)
+		 m_elapsedTime(0)
 	{
 		m_fov = 1 / (tan((50 * PI / 180) * 0.5) * 0.5);
 		m_z_ratio = m_z_far / m_z_near;
@@ -22,7 +24,7 @@ namespace test {
 		m_vertices[6] = glm::vec3(1.0f, 0.0f, 1.0f);
 		m_vertices[7] = glm::vec3(0.0f, 0.0f, 1.0f);
 
-		Shader shader(SHADERS_FILE_PATH);
+		//Shader shader(SHADERS_FILE_PATH);
 
 		VertexArray VA;
 		VertexBuffer VB(m_vertices, 8 * 3 * sizeof(glm::vec3));
@@ -43,7 +45,6 @@ namespace test {
 		m_elapsedTime = 1.0f * deltaTime;
 
 		int win_width, win_height;
-		glfwGetWindowSize(m_window, &win_width, &win_height);
 		if(win_width != 0)
 			m_aspect_ratio = (float) win_width / win_height; // TODO: trying to do this dinamically
 

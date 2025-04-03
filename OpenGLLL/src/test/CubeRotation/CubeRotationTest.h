@@ -1,8 +1,11 @@
 #pragma once
 
-#include"Test.h"
+#include"../Test.h"
 
 #include"../Renderer.h"
+
+#include <glm/ext/vector_float3.hpp>
+#include <glm/ext/matrix_float4x4.hpp>
 
 namespace test {
 	class CubeRotationTest : public Test {
@@ -14,7 +17,6 @@ namespace test {
 		virtual void OnRender() override;
 		virtual void OnImGuiRender() override;
 	private:
-		GLFWwindow* m_window;
 		unsigned int m_elapsedTime;
 
 		glm::vec3 m_vertices[8];
