@@ -939,7 +939,7 @@
     <ClInclude Include="src\VertexBufferLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\TestClearColor.h">
+    <ClInclude Include="src\test\ClearColor\TestClearColor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1014,6 +1014,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\ClearColor\TestClearColor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1431,6 +1434,7 @@
     <None Include="x64\Debug\vc143.idb" />
     <None Include="x64\Debug\vc143.pdb" />
     <None Include="res\shader\Basic.shader" />
+    <None Include="x64\Debug\OpenGLLL.ilk" />
   </ItemGroup>
   <ItemGroup>
     <Object Include="x64\Debug\glad.obj" />
@@ -1444,6 +1448,18 @@
     <Object Include="x64\Debug\imgui_widgets.obj" />
     <Object Include="x64\Debug\KeyHandler.obj" />
     <Object Include="x64\Debug\stb_image.obj" />
+    <Object Include="x64\Debug\VertexBuffer.obj" />
+    <Object Include="x64\Debug\VertexArray.obj" />
+    <Object Include="x64\Debug\Texture.obj" />
+    <Object Include="x64\Debug\TestClearColor.obj" />
+    <Object Include="x64\Debug\Test.obj" />
+    <Object Include="x64\Debug\Shader.obj" />
+    <Object Include="x64\Debug\Renderer.obj" />
+    <Object Include="x64\Debug\MovingSquaresTest.obj" />
+    <Object Include="x64\Debug\Object.obj" />
+    <Object Include="x64\Debug\Mesh.obj" />
+    <Object Include="x64\Debug\Main.obj" />
+    <Object Include="x64\Debug\IndexBuffer.obj" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="x64\Debug\OpenGLLL.Build.CppClean.log" />
@@ -1460,5 +1476,8 @@
     <Image Include="res\texture\download.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Dependencies\GL\GLFW\lib\glfw3.lib" />
   </ItemGroup>
 </Project>

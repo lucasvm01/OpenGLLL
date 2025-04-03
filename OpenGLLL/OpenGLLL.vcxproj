@@ -496,6 +496,7 @@
     <None Include="src\vendor\glm\gtx\vector_query.inl" />
     <None Include="src\vendor\glm\gtx\wrap.inl" />
     <None Include="x64\Debug\OpenGLLL.exe.recipe" />
+    <None Include="x64\Debug\OpenGLLL.ilk" />
     <None Include="x64\Debug\vc143.idb" />
     <None Include="x64\Debug\vc143.pdb" />
   </ItemGroup>
@@ -509,8 +510,20 @@
     <Object Include="x64\Debug\imgui_impl_opengl3.obj" />
     <Object Include="x64\Debug\imgui_tables.obj" />
     <Object Include="x64\Debug\imgui_widgets.obj" />
+    <Object Include="x64\Debug\IndexBuffer.obj" />
     <Object Include="x64\Debug\KeyHandler.obj" />
+    <Object Include="x64\Debug\Main.obj" />
+    <Object Include="x64\Debug\Mesh.obj" />
+    <Object Include="x64\Debug\MovingSquaresTest.obj" />
+    <Object Include="x64\Debug\Object.obj" />
+    <Object Include="x64\Debug\Renderer.obj" />
+    <Object Include="x64\Debug\Shader.obj" />
     <Object Include="x64\Debug\stb_image.obj" />
+    <Object Include="x64\Debug\Test.obj" />
+    <Object Include="x64\Debug\TestClearColor.obj" />
+    <Object Include="x64\Debug\Texture.obj" />
+    <Object Include="x64\Debug\VertexArray.obj" />
+    <Object Include="x64\Debug\VertexBuffer.obj" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="x64\Debug\OpenGLLL.Build.CppClean.log" />
@@ -521,6 +534,9 @@
     <Image Include="res\texture\Cleiton.jpg" />
     <Image Include="res\texture\download.jpg" />
     <Image Include="res\texture\OMG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Dependencies\GL\GLFW\lib\glfw3.lib" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

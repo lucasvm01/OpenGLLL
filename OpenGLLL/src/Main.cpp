@@ -77,9 +77,6 @@ int main(void) {
 		current_test = test_menu;
 
 		test_menu->RegisterTest<test::TestClearColor>("Clear color");
-
-		current_test = test_menu;
-
 		test_menu->RegisterTest<test::MovingSquaresTest>("Moving squares");
 		
 		
