@@ -26,6 +26,7 @@
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\KeyHandler.h" />
     <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\objects\Square\Square.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\test\MovingSquares\MovingSquaresTest.h" />
@@ -335,8 +336,9 @@
     <ClCompile Include="src\KeyHandler.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
-    <ClCompile Include="src\Object.cpp" />
-    <ClCompile Include="src\Object.h" />
+    <ClCompile Include="src\objects\Object.cpp" />
+    <ClCompile Include="src\objects\Object.h" />
+    <ClCompile Include="src\objects\Square\Square.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\test\MovingSquares\MovingSquaresTest.cpp" />

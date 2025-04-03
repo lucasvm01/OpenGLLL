@@ -2,7 +2,7 @@
 
 #include"../Test.h"
 
-#include"../Object.h"
+#include"../objects/Square/Square.h"
 
 #include<memory>
 
@@ -24,8 +24,8 @@ namespace test {
 		Renderer m_renderer;
 		KeyHandler m_keyHandler;
 
-		Object SquareA;
-		Object SquareB;
+		Square SquareA;
+		Square SquareB;
 		float m_speed;
 	};
 }
