@@ -4,12 +4,17 @@
 #include<sstream>
 
 #include"Renderer.h"
+#include"KeyHandler.h"
+
+#include"VertexBufferLayout.h"
 
 #include"imgui/imgui.h"
 #include"imgui/imgui_impl_glfw.h"
 #include"imgui/imgui_impl_opengl3.h"
 
 #include"test/Test.h"
+#include"test/ClearColor/TestClearColor.h"
+#include"test/MovingSquares/MovingSquaresTest.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
@@ -51,6 +56,7 @@ int main(void) {
 		// Setup Renderer
 		Renderer renderer;
 
+
 		// Setup ImGui
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -59,17 +65,16 @@ int main(void) {
 		ImGui_ImplOpenGL3_Init(glsl_version);
 		ImGui::StyleColorsDark();
 
-		// ImGui
-		bool show_demo_window = true;
-		bool show_another_window = false;
-		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
 		// Test menu environment
 		test::Test* current_test = nullptr;
 		test::TestMenu* test_menu = new test::TestMenu(current_test);
+		current_test = test_menu;
 
+		test_menu->RegisterTest<test::TestClearColor>("Clear color");
+		test_menu->RegisterTest<test::MovingSquaresTest>("Moving squares");
+		
+		
 		// Setup logic
-
 
 		// Main loop
 		while (!glfwWindowShouldClose(window)) {
@@ -96,6 +101,7 @@ int main(void) {
 				}
 
 				current_test->OnImGuiRender();
+
 				ImGui::End();
 			}
 

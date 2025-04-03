@@ -1,9 +1,14 @@
 #pragma once
 
+#include"../Renderer.h"
+#include"imgui/imgui.h"
+
 #include<iostream>
 #include<vector>
 #include<string>
 #include<functional>
+
+#include"../KeyHandler.h"
 
 namespace test {
 	class Test {
@@ -30,7 +35,7 @@ namespace test {
 			m_tests.push_back(std::make_pair(name, []() { return new T(); }));
 		}
 	private:
-		Test* m_current_test;
+		Test*& m_current_test;
 		std::vector<std::pair<std::string, std::function<Test*()>>> m_tests;
 	};
 }

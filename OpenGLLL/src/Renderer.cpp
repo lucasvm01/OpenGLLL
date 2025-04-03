@@ -14,15 +14,27 @@ bool GLLogCall(const char* function, const char* file, int line) {
 	return true;
 }
 
-void Renderer::Draw(const VertexArray& VA, const IndexBuffer& IB, const Shader& shader) const
+//void Renderer::Draw(const VertexArray& VA, const IndexBuffer& IB, const Shader& shader) const
+//{
+//	// Bind stuff
+//	//shader.Bind();
+//	VA.Bind();
+//	IB.Bind();
+//
+//	// Draw call
+//	GLCall(glDrawElements(GL_TRIANGLES, IB.GetCount(), GL_UNSIGNED_INT, nullptr));
+//
+//}
+
+void Renderer::Draw(Mesh &mesh) const
 {
 	// Bind stuff
 	//shader.Bind();
-	VA.Bind();
-	IB.Bind();
+	mesh.m_VAO->Bind();
+	mesh.m_IBO->Bind();
 
 	// Draw call
-	GLCall(glDrawElements(GL_TRIANGLES, IB.GetCount(), GL_UNSIGNED_INT, nullptr));
+	GLCall(glDrawElements(GL_TRIANGLES, mesh.m_IBO->GetCount(), GL_UNSIGNED_INT, nullptr));
 
 }
 

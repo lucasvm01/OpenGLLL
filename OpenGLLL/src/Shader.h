@@ -12,7 +12,7 @@ struct ShaderProgramSource {
 
 class Shader {
 private:
-	const std::string& m_Filepath;
+	const std::string m_Filepath;
 	unsigned int m_RendederID;
 	std::unordered_map<std::string, int> m_UniformLocationCache;
 public:

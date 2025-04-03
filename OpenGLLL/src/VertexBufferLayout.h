@@ -4,6 +4,8 @@
 
 #include<vector>
 
+#include"Renderer.h"
+
 #include <stdexcept>
 
 struct VertexBufferElement {
