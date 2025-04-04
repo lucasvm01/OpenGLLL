@@ -1,5 +1,8 @@
 #include"MovingSquaresTest.h"
 
+#define SHADERS_FILE_PATH "res/shader/"
+#define TEXTURES_FILE_PATH "res/texture/"
+
 namespace test {
 	MovingSquaresTest::MovingSquaresTest() :
 	m_time(0), m_speed(2.0f)
@@ -28,8 +31,14 @@ namespace test {
 		SquareA.SetPositionVertices(vertices, indices);
 		SquareB.SetPositionVertices(vertices, indices);
 
-		SquareA.DefineProperties();
-		SquareB.DefineProperties();
+		
+
+		SquareA.DefineProperties(
+			(std::string(SHADERS_FILE_PATH) + "Basic.shader").c_str(),
+			(std::string(TEXTURES_FILE_PATH) + "OMG.jpg").c_str());
+		SquareB.DefineProperties(
+			(std::string(SHADERS_FILE_PATH) + "Basic.shader").c_str(),
+			(std::string(TEXTURES_FILE_PATH) + "OMG.jpg").c_str());
 	}
 
 	void MovingSquaresTest::OnUpdate(float deltaTime)
@@ -110,5 +119,35 @@ namespace test {
 		ImGui::SliderFloat3("Translation B: ", &SquareB.m_translation.x, 0.0f, 960.0f);
 		ImGui::SliderFloat("Speed: ", &m_speed, 0.0f, 10.0f);
 		ImGui::Text("AVG Framerate: ¨.3f ms/f (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+		// Define a buffer to hold the text
+		static char textBuffer[256] = "Hello, ImGui!"; // Default text
+
+		//ImGui::Text("Select an image:");
+
+		//std::string selected_image;
+
+		//if (ImGui::Button("XQC")) {
+		//	strcpy_s(textBuffer, "Text 1 Selected!");
+		//	selected_image = "OMG.jpg";
+
+		//	SquareA.SetShader((std::string(TEXTURES_FILE_PATH) + selected_image).c_str());
+		//}
+
+		//if (ImGui::Button("Girl")) {
+		//	strcpy_s(textBuffer, "Text 2 Selected!");
+		//	selected_image = "download.jpg";
+
+		//	SquareA.SetShader((std::string(TEXTURES_FILE_PATH) + selected_image).c_str());
+		//}
+
+		//if (ImGui::Button("Cleiton")) {
+		//	strcpy_s(textBuffer, "Text 3 Selected!");
+		//	selected_image = "Cleiton.jpg";
+
+		//	SquareA.SetShader((std::string(TEXTURES_FILE_PATH) + selected_image).c_str());
+		//}
+
+		//// Display the selected text in a text input field
+		//ImGui::InputText("Selected Image: ", textBuffer, IM_ARRAYSIZE(textBuffer));
 	}
 }

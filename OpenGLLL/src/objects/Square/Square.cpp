@@ -1,7 +1,5 @@
 #include "Square.h"
 
-#define SHADERS_FILE_PATH "res/shader/Basic.shader"
-#define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
 
 // TODO
 void Square::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)
@@ -9,7 +7,7 @@ void Square::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)
 	m_mesh.SetVerticesProperties(vertices, indices);
 }
 
-void Square::DefineProperties() {
+void Square::DefineProperties(std::string shader_path, std::string texture_path) {
 
 	m_mesh.m_VAO = std::make_unique<VertexArray>();
 	m_mesh.m_VBO = std::make_unique<VertexBuffer>(m_mesh.m_vertices, 4 * 2 * sizeof(glm::vec3)); 
@@ -22,12 +20,12 @@ void Square::DefineProperties() {
 	GLCall(glEnable(GL_BLEND));
 	GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
-	SetShader(SHADERS_FILE_PATH);
+	SetShader(shader_path);
 
 	//m_shader->SetUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
 
 
-	SetTexture(TEXTURES_FILE_PATH);
+	SetTexture(texture_path);
 
 	m_shader->SetUniform1i("u_texture", 0);
 }
