@@ -55,8 +55,8 @@ public:
 
 	template<>
 	void Push<glm::vec3>(unsigned int count) {
-		m_Elements.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
-		m_Stride += VertexBufferElement::GetSizeOfType(GL_UNSIGNED_BYTE) * count;
+		m_Elements.push_back({ GL_FLOAT, count * 3, GL_TRUE });
+		m_Stride += VertexBufferElement::GetSizeOfType(GL_FLOAT) * count * 3;
 	}
 
 	inline const std::vector<VertexBufferElement> GetElements() const { return m_Elements; }

@@ -4,7 +4,7 @@
 #define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
 
 // TODO
-void Square::SetPositionVertices(float* vertices, unsigned int* indices)
+void Square::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)
 {
 	m_mesh.SetVerticesProperties(vertices, indices);
 }
@@ -12,10 +12,10 @@ void Square::SetPositionVertices(float* vertices, unsigned int* indices)
 void Square::DefineProperties() {
 
 	m_mesh.m_VAO = std::make_unique<VertexArray>();
-	m_mesh.m_VBO = std::make_unique<VertexBuffer>(m_mesh.m_vertices, 4 * 4 * sizeof(float));
+	m_mesh.m_VBO = std::make_unique<VertexBuffer>(m_mesh.m_vertices, 4 * 2 * sizeof(glm::vec3)); 
 	VertexBufferLayout layout;
-	layout.Push<float>(2); // Coords
-	layout.Push<float>(2); // ?? Local coords?
+	layout.Push<glm::vec3>(1); // Coords
+	layout.Push<glm::vec3>(1); // ?? Local coords?
 	m_mesh.m_VAO->AddBuffer(*m_mesh.m_VBO, layout);
 	m_mesh.m_IBO = std::make_unique<IndexBuffer>(m_mesh.m_indices, 6);
 

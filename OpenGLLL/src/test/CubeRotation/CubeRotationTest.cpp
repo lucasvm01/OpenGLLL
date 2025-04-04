@@ -1,9 +1,4 @@
-
-
 #include"CubeRotationTest.h"
-#include"../../VertexBufferLayout.h"
-
-#include<cmath>
 
 #define PI 3.1415926535897931
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
@@ -44,9 +39,11 @@ namespace test {
 	{
 		m_elapsedTime = 1.0f * deltaTime;
 
-		int win_width, win_height;
-		if(win_width != 0)
-			m_aspect_ratio = (float) win_width / win_height; // TODO: trying to do this dinamically
+		m_aspect_ratio = 0.0f;
+
+		//int win_width, win_height;
+		//if(win_width != 0)
+		//	m_aspect_ratio = (float) win_width / win_height; // TODO: trying to do this dinamically
 
 		m_projection_matrix = glm::mat4x4{
 			{m_aspect_ratio * m_fov, 0, 0, 0}, // x

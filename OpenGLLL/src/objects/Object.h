@@ -18,7 +18,7 @@ class Object {
 public:
 	Object() : m_shader(nullptr), m_texture(nullptr) {}
 
-	virtual void SetPositionVertices(float* vertices, unsigned int* indices) = 0; // GetObject() from file?
+	virtual void SetPositionVertices(glm::vec3* vertices, unsigned int* indices) = 0; // GetObject() from file?
 	virtual void DefineProperties() = 0;
 
 	void SetShader(std::string shader_path);

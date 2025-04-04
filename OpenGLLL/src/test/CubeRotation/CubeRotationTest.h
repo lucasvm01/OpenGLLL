@@ -2,10 +2,12 @@
 
 #include"../Test.h"
 
-#include"../Renderer.h"
-
 #include <glm/ext/vector_float3.hpp>
 #include <glm/ext/matrix_float4x4.hpp>
+
+#include<cmath>
+
+#include"../../VertexBufferLayout.h"
 
 namespace test {
 	class CubeRotationTest : public Test {

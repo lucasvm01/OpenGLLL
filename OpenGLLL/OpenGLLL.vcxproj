@@ -26,6 +26,7 @@
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\KeyHandler.h" />
     <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\objects\Cube\Cube.h" />
     <ClInclude Include="src\objects\Square\Square.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
@@ -506,6 +507,7 @@
     <None Include="x64\Debug\vc143.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <Object Include="x64\Debug\CubeRotationTest.obj" />
     <Object Include="x64\Debug\glad.obj" />
     <Object Include="x64\Debug\glm.obj" />
     <Object Include="x64\Debug\imgui.obj" />
@@ -523,6 +525,7 @@
     <Object Include="x64\Debug\Object.obj" />
     <Object Include="x64\Debug\Renderer.obj" />
     <Object Include="x64\Debug\Shader.obj" />
+    <Object Include="x64\Debug\Square.obj" />
     <Object Include="x64\Debug\stb_image.obj" />
     <Object Include="x64\Debug\Test.obj" />
     <Object Include="x64\Debug\TestClearColor.obj" />
