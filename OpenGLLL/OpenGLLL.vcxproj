@@ -338,6 +338,7 @@
     <ClCompile Include="src\KeyHandler.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\objects\Cube\Cube.cpp" />
     <ClCompile Include="src\objects\Object.cpp" />
     <ClCompile Include="src\objects\Object.h" />
     <ClCompile Include="src\objects\Square\Square.cpp" />

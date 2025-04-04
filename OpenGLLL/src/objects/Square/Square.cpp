@@ -32,22 +32,22 @@ void Square::DefineProperties() {
 	m_shader->SetUniform1i("u_texture", 0);
 }
 
-void Square::MoveUp()
+void Square::MovementUp()
 {
 	m_translation = glm::vec3(0.0f, m_speed, 0.0f) + m_translation;
 }
 
-void Square::MoveDown()
+void Square::MovementDown()
 {
 	m_translation = glm::vec3(0.0f, -m_speed, 0.0f) + m_translation;
 }
 
-void Square::MoveLeft()
+void Square::MovementLeft()
 {
 	m_translation = glm::vec3(-m_speed, 0.0f, 0.0f) + m_translation;
 }
 
-void Square::MoveRight()
+void Square::MovementRight()
 {
 	m_translation = glm::vec3(m_speed, 0.0f, 0.0f) + m_translation;
 }

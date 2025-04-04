@@ -4,13 +4,13 @@
 
 class Cube : public Object {
 public:
-	void SetPositionVertices(float* vertices, unsigned int* indices); // GetObject() from file?
+	void SetPositionVertices(glm::vec3* vertices, unsigned int* indices); // GetObject() from file?
 	void DefineProperties();
 
-	void MoveUp();
-	void MoveDown();
-	void MoveLeft();
-	void MoveRight();
+	void MovementUp();
+	void MovementDown();
+	void MovementLeft();
+	void MovementRight();
 
 	void Move();
 private:
