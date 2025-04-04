@@ -1,15 +1,15 @@
-#include "Object.h"
+#include "Square.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
 
 // TODO
-void Object::SetPositionVertices(float* vertices, unsigned int* indices)
+void Square::SetPositionVertices(float* vertices, unsigned int* indices)
 {
 	m_mesh.SetVerticesProperties(vertices, indices);
 }
 
-void Object::DefineProperties() {
+void Square::DefineProperties() {
 
 	m_mesh.m_VAO = std::make_unique<VertexArray>();
 	m_mesh.m_VBO = std::make_unique<VertexBuffer>(m_mesh.m_vertices, 4 * 4 * sizeof(float));
@@ -32,42 +32,27 @@ void Object::DefineProperties() {
 	m_shader->SetUniform1i("u_texture", 0);
 }
 
-
-void Object::SetShader(std::string shader_path) {
-	m_shader = std::make_unique<Shader>(shader_path);
-	m_shader->Bind();
-}
-
-void Object::SetTexture(std::string texture_path) {
-	m_texture = std::make_unique<Texture>(texture_path);
-	m_texture->Bind();
-}
-
-void Object::MoveUp()
+void Square::MoveUp()
 {
 	m_translation = glm::vec3(0.0f, m_speed, 0.0f) + m_translation;
 }
 
-void Object::MoveDown()
+void Square::MoveDown()
 {
 	m_translation = glm::vec3(0.0f, -m_speed, 0.0f) + m_translation;
 }
 
-void Object::MoveLeft()
+void Square::MoveLeft()
 {
 	m_translation = glm::vec3(-m_speed, 0.0f, 0.0f) + m_translation;
 }
 
-void Object::MoveRight()
+void Square::MoveRight()
 {
 	m_translation = glm::vec3(m_speed, 0.0f, 0.0f) + m_translation;
 }
 
-void Object::SetSpeed(float speed) {
-	m_speed = speed;
-}
-
-void Object::Move() {
+void Square::Move() {
 	// Setup projection matrix
 	m_proj = glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f);
 
@@ -81,9 +66,4 @@ void Object::Move() {
 	glm::mat4 mvp = m_proj * m_view * model;
 
 	m_shader->SetUniformMat4f("u_mvp", mvp);
-}
-
-void Object::Draw(Renderer renderer)
-{
-	renderer.Draw(m_mesh);
 }
