@@ -85,16 +85,16 @@ namespace test {
 			for (int key : m_keyHandler.PressedKeys()) {
 				switch (key) {
 				case GLFW_KEY_UP:
-					SquareB.MoveUp();
+					SquareB.MovementUp();
 					break;
 				case GLFW_KEY_DOWN:
-					SquareB.MoveDown();
+					SquareB.MovementDown();
 					break;
 				case GLFW_KEY_LEFT:
-					SquareB.MoveLeft();
+					SquareB.MovementLeft();
 					break;
 				case GLFW_KEY_RIGHT:
-					SquareB.MoveRight();
+					SquareB.MovementRight();
 					break;
 				}
 			}

@@ -26,11 +26,9 @@
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\KeyHandler.h" />
     <ClInclude Include="src\Mesh.h" />
-    <ClInclude Include="src\objects\Cube\Cube.h" />
     <ClInclude Include="src\objects\Square\Square.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\test\CubeRotation\CubeRotationTest.h" />
     <ClInclude Include="src\test\MovingSquares\MovingSquaresTest.h" />
     <ClInclude Include="src\test\Test.h" />
     <ClInclude Include="src\test\ClearColor\TestClearColor.h" />
@@ -338,13 +336,11 @@
     <ClCompile Include="src\KeyHandler.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
-    <ClCompile Include="src\objects\Cube\Cube.cpp" />
     <ClCompile Include="src\objects\Object.cpp" />
     <ClCompile Include="src\objects\Object.h" />
     <ClCompile Include="src\objects\Square\Square.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\test\CubeRotation\CubeRotationTest.cpp" />
     <ClCompile Include="src\test\MovingSquares\MovingSquaresTest.cpp" />
     <ClCompile Include="src\test\Test.cpp" />
     <ClCompile Include="src\test\ClearColor\TestClearColor.cpp" />
@@ -508,7 +504,6 @@
     <None Include="x64\Debug\vc143.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <Object Include="x64\Debug\CubeRotationTest.obj" />
     <Object Include="x64\Debug\glad.obj" />
     <Object Include="x64\Debug\glm.obj" />
     <Object Include="x64\Debug\imgui.obj" />
