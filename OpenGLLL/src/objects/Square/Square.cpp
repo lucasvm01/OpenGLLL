@@ -1,7 +1,7 @@
 #include "Square.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
-#define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
+#define TEXTURES_FILE_PATH "res/texture/OMG.jpg"
 
 // TODO
 void Square::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)

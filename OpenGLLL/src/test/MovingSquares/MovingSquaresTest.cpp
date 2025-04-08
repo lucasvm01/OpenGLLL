@@ -10,13 +10,6 @@ namespace test {
 			glm::vec3( 50.0f,-50.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.5f),
 			glm::vec3( 50.0f, 50.0f, 0.0f), glm::vec3(1.0f, 1.0f, 0.5f),
 			glm::vec3(-50.0f, 50.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.5f)
-
-
-
-			//-50.0f, -50.0f, 0.0f, 0.0f,
-			// 50.0f, -50.0f, 1.0f, 0.0f,
-			// 50.0f,  50.0f, 1.0f, 1.0f,
-			//-50.0f,  50.0f, 0.0f, 1.0f
 		};
 
 		// Indices of positions in order of drawing
