@@ -30,6 +30,7 @@
     <ClInclude Include="src\objects\Object.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\test\CubeRotation\CubeRotationTest.h" />
     <ClInclude Include="src\test\MovingSquares\MovingSquaresTest.h" />
     <ClInclude Include="src\test\Test.h" />
     <ClInclude Include="src\test\ClearColor\TestClearColor.h" />
@@ -341,6 +342,7 @@
     <ClCompile Include="src\objects\Square\Square.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\test\CubeRotation\CubeRotationTest.cpp" />
     <ClCompile Include="src\test\MovingSquares\MovingSquaresTest.cpp" />
     <ClCompile Include="src\test\Test.cpp" />
     <ClCompile Include="src\test\ClearColor\TestClearColor.cpp" />

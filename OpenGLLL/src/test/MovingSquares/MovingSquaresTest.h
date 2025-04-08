@@ -13,14 +13,12 @@ namespace test {
 	class MovingSquaresTest : public Test {
 	public:
 		MovingSquaresTest();
-		virtual ~MovingSquaresTest() {}
+		~MovingSquaresTest() {}
 
 		virtual void OnUpdate(float deltaTime) override;
 		virtual void OnRender() override;
 		virtual void OnImGuiRender() override;
 	private:
-		float m_time;
-
 		Renderer m_renderer;
 		KeyHandler m_keyHandler;
 
