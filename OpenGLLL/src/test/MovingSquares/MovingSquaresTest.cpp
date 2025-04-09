@@ -21,8 +21,8 @@ namespace test {
 		SquareA.SetPositionVertices(vertices, indices);
 		SquareB.SetPositionVertices(vertices, indices);
 
-		SquareA.DefineProperties();
-		SquareB.DefineProperties();
+		SquareA.DefineProperties(1);
+		SquareB.DefineProperties(2);
 	}
 
 	void MovingSquaresTest::OnUpdate(float deltaTime)

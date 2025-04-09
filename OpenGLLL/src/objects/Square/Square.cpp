@@ -9,7 +9,7 @@ void Square::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)
 	m_mesh.SetVerticesProperties(vertices, indices);
 }
 
-void Square::DefineProperties() {
+void Square::DefineProperties(int op) {
 
 	m_mesh.m_VAO = std::make_unique<VertexArray>();
 	m_mesh.m_VBO = std::make_unique<VertexBuffer>(m_mesh.m_vertices, 4 * 2 * sizeof(glm::vec3)); 
@@ -26,8 +26,9 @@ void Square::DefineProperties() {
 
 	//m_shader->SetUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
 
+	if (op == 1)SetTexture(TEXTURES_FILE_PATH);
 
-	SetTexture(TEXTURES_FILE_PATH);
+	else SetTexture("res/texture/OMG.jpg");
 
 	m_shader->SetUniform1i("u_texture", 0);
 }

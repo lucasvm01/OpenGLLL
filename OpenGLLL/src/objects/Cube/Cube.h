@@ -2,7 +2,7 @@
 
 #include "../Object.h"
 
-class Square : public Object {
+class Cube : public Object {
 public:
 	void SetPositionVertices(glm::vec3* vertices, unsigned int* indices); // GetObject() from file?
 	void DefineProperties(int op);
@@ -11,8 +11,7 @@ public:
 	void MovementDown();
 	void MovementLeft();
 	void MovementRight();
-	
+
 	void Move();
-private:
 
 };

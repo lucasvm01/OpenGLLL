@@ -8,7 +8,6 @@
 
 class Mesh {
 public:
-public:
 	void SetVerticesProperties(glm::vec3* vertices, unsigned int* indices);
 
 	glm::vec3* m_vertices;
