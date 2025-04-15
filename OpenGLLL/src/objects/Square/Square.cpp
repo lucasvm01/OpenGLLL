@@ -34,16 +34,10 @@ void Square::DefineProperties(int op) {
 }
 
 void Square::Move() {
-	// Setup projection matrix
-	m_proj = glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f);
-
-	// Setup view matrix
-	m_view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-
 	// Setup model matrix
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), m_translation);
 
-	// Set mvp matrix
+	// Setup mvp matrix
 	glm::mat4 mvp = m_proj * m_view * model;
 
 	m_shader->SetUniformMat4f("u_mvp", mvp);

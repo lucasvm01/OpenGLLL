@@ -16,7 +16,9 @@
 
 class Object {
 public:
-	Object() : m_shader(nullptr), m_texture(nullptr) {}
+	Object() : m_shader(nullptr), m_texture(nullptr),
+		m_proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f)),
+		m_view(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))) {}
 
 	virtual void SetPositionVertices(glm::vec3* vertices, unsigned int* indices) = 0; // GetObject() from file?
 	virtual void DefineProperties(int op) = 0;
@@ -60,4 +62,5 @@ public:
 
 	glm::mat4 m_proj;
 	glm::mat4 m_view;
+	glm::mat4 m_rotation;
 };

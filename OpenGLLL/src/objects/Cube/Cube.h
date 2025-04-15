@@ -2,6 +2,7 @@
 
 #include "../Object.h"
 
+
 class Cube : public Object {
 public:
 	// Setup
@@ -18,6 +19,5 @@ public:
 	void RotationPositiveZ() override;
 	void RotationNegativeZ() override;
 
-	void Move();
-
+	void Move() override;
 };

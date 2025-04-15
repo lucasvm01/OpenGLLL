@@ -25,8 +25,7 @@ namespace test {
 		SquareB.DefineProperties(2);
 	}
 
-	void MovingSquaresTest::OnUpdate(float deltaTime)
-	{
+	void MovingSquaresTest::OnUpdate(float deltaTime) {
 	}
 
 	void MovingSquaresTest::OnRender() {
