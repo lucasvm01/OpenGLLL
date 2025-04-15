@@ -13,12 +13,14 @@
 namespace test {
 	class Test {
 	public:
-		Test(){}
+		Test() : m_elapsed_time(0) {}
 		virtual ~Test(){}
 
 		virtual void OnUpdate(float deltaTime){}
 		virtual void OnRender(){}
 		virtual void OnImGuiRender(){}
+
+		float m_elapsed_time;
 	};
 
 	class TestMenu : public Test {

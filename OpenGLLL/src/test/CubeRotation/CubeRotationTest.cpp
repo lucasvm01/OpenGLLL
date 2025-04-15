@@ -4,10 +4,16 @@ test::CubeRotationTest::CubeRotationTest()
 {
 	// Vertices
 	glm::vec3 vertices[] = {
-		glm::vec3(-50.0f,-50.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.5f),
-		glm::vec3(50.0f,-50.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.5f),
-		glm::vec3(50.0f, 50.0f, 0.0f), glm::vec3(1.0f, 1.0f, 0.5f),
-		glm::vec3(-50.0f, 50.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.5f)
+		// Front vertices
+		glm::vec3(-50.0f,-50.0f,-50.0f), glm::vec3(0.0f, 0.0f, 0.5f),
+		glm::vec3( 50.0f,-50.0f,-50.0f), glm::vec3(1.0f, 0.0f, 0.5f),
+		glm::vec3( 50.0f, 50.0f,-50.0f), glm::vec3(1.0f, 1.0f, 0.5f),
+		glm::vec3(-50.0f, 50.0f,-50.0f), glm::vec3(0.0f, 1.0f, 0.5f),
+		// Back vertices
+		glm::vec3(-50.0f,-50.0f, 50.0f),
+		glm::vec3( 50.0f,-50.0f, 50.0f),
+		glm::vec3( 50.0f, 50.0f, 50.0f),
+		glm::vec3(-50.0f, 50.0f, 50.0f),
 	};
 
 	// Indices of positions in order of drawing
@@ -18,14 +24,12 @@ test::CubeRotationTest::CubeRotationTest()
 
 }
 
-void test::CubeRotationTest::OnUpdate(float deltaTime)
-{
+void test::CubeRotationTest::OnUpdate(float deltaTime) {
+	m_elapsed_time += deltaTime;
 }
 
-void test::CubeRotationTest::OnRender()
-{
+void test::CubeRotationTest::OnRender() {
 }
 
-void test::CubeRotationTest::OnImGuiRender()
-{
+void test::CubeRotationTest::OnImGuiRender() {
 }
