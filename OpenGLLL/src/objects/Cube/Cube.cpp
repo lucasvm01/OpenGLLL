@@ -1,29 +1,30 @@
 #include "Cube.h"
 
-void Cube::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)
-{
+// Setup
+void Cube::SetPositionVertices(glm::vec3* vertices, unsigned int* indices) {
 }
 
-void Cube::DefineProperties(int op)
-{
+void Cube::DefineProperties(int op) {
 }
 
-void Cube::MovementUp()
-{
+// Rotation
+void Cube::RotationPositiveX() {
 }
 
-void Cube::MovementDown()
-{
+void Cube::RotationNegativeX() {
 }
 
-void Cube::MovementLeft()
-{
+void Cube::RotationPositiveY() {
 }
 
-void Cube::MovementRight()
-{
+void Cube::RotationNegativeY() {
 }
 
-void Cube::Move()
-{
+void Cube::RotationPositiveZ() {
+}
+
+void Cube::RotationNegativeZ() {
+}
+
+void Cube::Move() {
 }

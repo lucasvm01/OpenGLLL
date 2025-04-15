@@ -24,10 +24,26 @@ public:
 	void SetShader(std::string shader_path);
 	void SetTexture(std::string texture_path);
 
-	virtual void MovementUp() = 0;
-	virtual void MovementDown() = 0;
-	virtual void MovementLeft() = 0;
-	virtual void MovementRight() = 0;
+	// Translation
+	virtual void MovementPositiveY();
+	virtual void MovementNegativeY();
+
+	virtual void MovementPositiveX();
+	virtual void MovementNegativeX();
+
+	virtual void MovementPositiveZ();
+	virtual void MovementNegativeZ();
+
+	// Rotation
+	virtual void RotationPositiveX() = 0;
+	virtual void RotationNegativeX() = 0;
+
+	virtual void RotationPositiveY() = 0;
+	virtual void RotationNegativeY() = 0;
+	
+	virtual void RotationPositiveZ() = 0;
+	virtual void RotationNegativeZ() = 0;
+
 	void SetSpeed(float speed);
 
 	virtual void Move() = 0;

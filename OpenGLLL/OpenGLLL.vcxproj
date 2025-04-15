@@ -27,6 +27,7 @@
     <ClInclude Include="src\KeyHandler.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\objects\Cube\Cube.h" />
+    <ClInclude Include="src\objects\Object2D.h" />
     <ClInclude Include="src\objects\Square\Square.h" />
     <ClInclude Include="src\objects\Object.h" />
     <ClInclude Include="src\Renderer.h" />

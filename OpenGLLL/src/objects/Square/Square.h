@@ -1,18 +1,13 @@
 #pragma once
 
-#include "../Object.h"
+#include "../Object2D.h"
 
-class Square : public Object {
+class Square : public Object2D {
 public:
-	void SetPositionVertices(glm::vec3* vertices, unsigned int* indices); // GetObject() from file?
-	void DefineProperties(int op);
+	void SetPositionVertices(glm::vec3* vertices, unsigned int* indices) override; // GetObject() from file?
+	void DefineProperties(int op) override;
 
-	void MovementUp();
-	void MovementDown();
-	void MovementLeft();
-	void MovementRight();
-	
-	void Move();
+	void Move() override;
 private:
 
 };

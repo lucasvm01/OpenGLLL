@@ -38,30 +38,28 @@ namespace test {
 
 		// Loop logic
 
-		SquareA.m_shader->Bind();
-		SquareA.m_texture->Bind();
-
-		SquareB.m_shader->Bind();
-		SquareB.m_texture->Bind();
-
 		m_keyHandler.KeyCallback();
 
+		// Square A
 		{
+			SquareA.m_shader->Bind();
+			SquareA.m_texture->Bind();
+
 			SquareA.SetSpeed(m_speed);
 
 			for (int key : m_keyHandler.PressedKeys()) {
 				switch (key) {
 				case GLFW_KEY_W:
-					SquareA.MovementUp();
+					SquareA.MovementPositiveY();
 					break;
 				case GLFW_KEY_S:
-					SquareA.MovementDown();
+					SquareA.MovementNegativeY();
 					break;
 				case GLFW_KEY_A:
-					SquareA.MovementLeft();
+					SquareA.MovementNegativeX();
 					break;
 				case GLFW_KEY_D:
-					SquareA.MovementRight();
+					SquareA.MovementPositiveX();
 					break;
 				}
 			}
@@ -72,22 +70,26 @@ namespace test {
 			SquareA.Draw(m_renderer);
 		}
 
+		// SquareB
 		{
+			SquareB.m_shader->Bind();
+			SquareB.m_texture->Bind();
+
 			SquareB.SetSpeed(m_speed);
 
 			for (int key : m_keyHandler.PressedKeys()) {
 				switch (key) {
 				case GLFW_KEY_UP:
-					SquareB.MovementUp();
+					SquareB.MovementPositiveY();
 					break;
 				case GLFW_KEY_DOWN:
-					SquareB.MovementDown();
+					SquareB.MovementNegativeY();
 					break;
 				case GLFW_KEY_LEFT:
-					SquareB.MovementLeft();
+					SquareB.MovementNegativeX();
 					break;
 				case GLFW_KEY_RIGHT:
-					SquareB.MovementRight();
+					SquareB.MovementPositiveX();
 					break;
 				}
 			}
@@ -98,6 +100,7 @@ namespace test {
 			SquareB.Draw(m_renderer);
 		}
 	}
+
 	void MovingSquaresTest::OnImGuiRender() {
 		ImGui::SliderFloat3("Translation A: ", &SquareA.m_translation.x, 0.0f, 960.0f);
 		ImGui::SliderFloat3("Translation B: ", &SquareB.m_translation.x, 0.0f, 960.0f);

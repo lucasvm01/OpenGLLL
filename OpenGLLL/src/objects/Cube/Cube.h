@@ -4,13 +4,19 @@
 
 class Cube : public Object {
 public:
-	void SetPositionVertices(glm::vec3* vertices, unsigned int* indices); // GetObject() from file?
-	void DefineProperties(int op);
+	// Setup
+	void SetPositionVertices(glm::vec3* vertices, unsigned int* indices) override; // GetObject() from file?
+	void DefineProperties(int op) override;
 
-	void MovementUp();
-	void MovementDown();
-	void MovementLeft();
-	void MovementRight();
+	// Rotation
+	void RotationPositiveX() override;
+	void RotationNegativeX() override;
+
+	void RotationPositiveY() override;
+	void RotationNegativeY() override;
+
+	void RotationPositiveZ() override;
+	void RotationNegativeZ() override;
 
 	void Move();
 
