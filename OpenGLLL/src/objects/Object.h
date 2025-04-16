@@ -16,7 +16,8 @@
 
 class Object {
 public:
-	Object() : m_shader(nullptr), m_texture(nullptr),
+	Object() : 
+		m_shader(nullptr), m_texture(nullptr), m_facing_angles(glm::vec3(1.0f)),
 		m_proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f)),
 		m_view(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))) {}
 
@@ -37,18 +38,19 @@ public:
 	virtual void TranslateNegativeZ();
 
 	// Rotation
-	virtual void RotatePositiveX();
-	virtual void RotateNegativeX();
+	virtual void RotatePositiveX(float step);
+	virtual void RotateNegativeX(float step);
 
-	virtual void RotatePositiveY();
-	virtual void RotateNegativeY();
+	virtual void RotatePositiveY(float step);
+	virtual void RotateNegativeY(float step);
 	
-	virtual void RotatePositiveZ();
-	virtual void RotateNegativeZ();
+	virtual void RotatePositiveZ(float step);
+	virtual void RotateNegativeZ(float step);
 
 	void SetSpeed(float speed);
 
 	virtual void Move() = 0;
+	virtual void Rotate(float time);
 
 	void Draw(Renderer renderer);
 
@@ -59,6 +61,8 @@ public:
 
 	glm::vec3 m_translation;
 	float m_speed;
+
+	glm::vec3 m_facing_angles;
 
 	glm::mat4 m_proj;
 	glm::mat4 m_view;

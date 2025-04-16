@@ -10,4 +10,6 @@ public:
 	void DefineProperties() override;
 
 	void Move() override;
+private:
+	void SetupProjection();
 };

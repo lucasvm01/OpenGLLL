@@ -1,7 +1,7 @@
 #include "Cube.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
-#define TEXTURES_FILE_PATH "res/texture/OMG.jpg"
+#define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
 
 // Setup - Change to Object class implementation?
 void Cube::SetPositionVertices(glm::vec3* vertices, unsigned int* indices) {
@@ -22,19 +22,59 @@ void Cube::DefineProperties() {
 
 	SetShader(SHADERS_FILE_PATH);
 
-	m_shader->SetUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
+	//m_shader->SetUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
 
-	//SetTexture(TEXTURES_FILE_PATH);
+	SetTexture(TEXTURES_FILE_PATH);
 
-	//m_shader->SetUniform1i("u_texture", 0);
+	m_shader->SetUniform1i("u_texture", 0);
+
+	SetupProjection();
 }
 
 void Cube::Move() {
 	// Setup model matrix
-	glm::mat4 model = glm::translate(glm::mat4(1.0f), m_translation);
+	glm::mat4 model = m_rotation * glm::translate(glm::mat4(1.0f), m_translation);
 
 	// Setup mvp matrix
 	glm::mat4 mvp = m_proj * m_view * model;
 
 	m_shader->SetUniformMat4f("u_mvp", mvp);
+}
+
+void Cube::SetupProjection() {
+	int width, height;
+	glfwGetWindowSize(glfwGetCurrentContext(), &width, &height);
+	float winRatio = width / height;
+
+	float pi = glm::pi<float>();
+	
+	float angle = (50 * pi / 180) / 2;
+	float fov = 1 / (glm::tan(angle) / 2);
+
+	float zFar = 10000, zNear = 0.1;
+	float z = zFar / (zFar - zNear);
+
+	m_proj = glm::mat4(
+		winRatio * fov, 0,	 0,			0,
+		0,				fov, 0,			0,
+		0,				0,   z,			1,
+		0,				0,  -zNear * z, 0
+	);
+
+	/*
+	
+	angle = (50 * PI / 180) * 0.5;
+	zfar = 1000;
+	znear = 0.1;
+	* 
+	a = winWidth / winHeight;
+	fov = 1 / (tan(angle) / 2);
+	q = zfar / (zfar - znear);
+
+	proj = [[a * fov, 0, 0, 0],
+		[0, fov, 0, 0],
+		[0, 0, q, 1],
+		[0, 0, -znear * q, 0]];
+	*/
+
 }

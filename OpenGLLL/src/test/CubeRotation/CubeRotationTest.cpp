@@ -17,10 +17,10 @@ test::CubeRotationTest::CubeRotationTest()
 	};
 
 	// Indices of positions in order of drawing
-	unsigned int indices[] = {
-		// Front face triangles
-		0, 1, 2,
-		2, 3, 0,
+	unsigned int indices[] = { // 36
+		// Back face triangles
+		7, 6, 5,
+		5, 4, 7,
 		// Right face triangles
 		3, 2, 6,
 		6, 7, 3,
@@ -33,18 +33,21 @@ test::CubeRotationTest::CubeRotationTest()
 		// Down face triangles
 		0, 4, 7,
 		7, 3, 0,
-		// Back face triangles
-		7, 6, 5,
-		5, 4, 7,
+		// Front face triangles
+		0, 1, 2,
+		2, 3, 0,
 	};
 
 	CubeA.SetPositionVertices(vertices, indices);
 
 	CubeA.DefineProperties();
+
 }
 
 void test::CubeRotationTest::OnUpdate(float deltaTime) {
 	m_elapsed_time += deltaTime;
+
+	CubeA.Rotate(m_elapsed_time);
 }
 
 void test::CubeRotationTest::OnRender() {
@@ -61,6 +64,31 @@ void test::CubeRotationTest::OnRender() {
 	{
 		CubeA.m_shader->Bind();
 		//CubeA.m_texture->Bind();
+
+		CubeA.SetSpeed(2.0f);
+
+		for (int key : m_keyHandler.PressedKeys()) {
+			switch (key) {
+			case GLFW_KEY_W:
+				CubeA.TranslatePositiveY();
+				break;
+			case GLFW_KEY_S:
+				CubeA.TranslateNegativeY();
+				break;
+			case GLFW_KEY_A:
+				CubeA.TranslateNegativeX();
+				break;
+			case GLFW_KEY_D:
+				CubeA.TranslatePositiveX();
+				break;
+			case GLFW_KEY_UP:
+				CubeA.TranslatePositiveZ();
+				break;
+			case GLFW_KEY_DOWN:
+				CubeA.TranslateNegativeZ();
+				break;
+			}
+		}
 
 		CubeA.Move();
 

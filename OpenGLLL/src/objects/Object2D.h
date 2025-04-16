@@ -8,6 +8,6 @@ class Object2D : public Object {
 	virtual void TranslateNegativeZ() override {}
 	
 	// Rotation
-	virtual void RotatePositiveZ() override {}
-	virtual void RotateNegativeZ() override {}
+	virtual void RotatePositiveZ(float step) override {}
+	virtual void RotateNegativeZ(float step) override {}
 };

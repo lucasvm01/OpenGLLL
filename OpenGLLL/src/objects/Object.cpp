@@ -36,22 +36,28 @@ void Object::TranslateNegativeZ() {
 }
 
 // Rotation
-void Object::RotatePositiveX() {
+void Object::RotatePositiveX(float step) {
+	m_facing_angles.x += step;
 }
 
-void Object::RotateNegativeX() {
+void Object::RotateNegativeX(float step) {
+	m_facing_angles.x += step;
 }
 
-void Object::RotatePositiveY() {
+void Object::RotatePositiveY(float step) {
+	m_facing_angles.x += step;
 }
 
-void Object::RotateNegativeY() {
+void Object::RotateNegativeY(float step) {
+	m_facing_angles.x += step;
 }
 
-void Object::RotatePositiveZ() {
+void Object::RotatePositiveZ(float step) {
+	m_facing_angles.x += step;
 }
 
-void Object::RotateNegativeZ() {
+void Object::RotateNegativeZ(float step) {
+	m_facing_angles.x += step;
 }
 
 
@@ -59,6 +65,49 @@ void Object::SetSpeed(float speed) {
 	m_speed = speed;
 }
 
+
+void Object::Rotate(float time) {
+	// Rotation in Z
+	/*
+	m_rotation = glm::mat4(
+		glm::cos(time),-glm::sin(time), 0, 0,
+		glm::sin(time), glm::cos(time), 0, 0,
+		0,			    0,				1, 0,
+		0,				0,				0, 1
+	);*/
+	
+	// Rotation in X
+	
+	m_rotation = glm::mat4(
+		1,			    0,				0, 0,
+		0, glm::cos(time),-glm::sin(time), 0,
+		0, glm::sin(time), glm::cos(time), 0,
+		0,				0,				0, 1
+	);
+	
+
+	// Rotation in Y
+	/*
+	m_rotation = glm::mat4(
+		glm::cos(time), 0,-glm::sin(time), 0,
+		0,			    1,				0, 0,
+		glm::sin(time), 0, glm::cos(time), 0,
+		0,				0,				0, 1
+	);
+	*/
+	
+	/*
+	matRotZ = [[cos(time), -sin(time), 0, 0],
+		[sin(time), cos(time), 0, 0],
+		[0, 0, 1, 0],
+		[0, 0, 0, 1]];
+
+	matRotX = [[1, 0, 0, 0],
+		[0, cos(time / 2), -sin(time / 2), 0],
+		[0, sin(time / 2), cos(time / 2), 0],
+		[0, 0, 0, 1]];*/
+
+}
 
 void Object::Draw(Renderer renderer)
 {
