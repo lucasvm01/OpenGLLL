@@ -15,6 +15,7 @@
 #include"test/Test.h"
 #include"test/ClearColor/TestClearColor.h"
 #include"test/MovingSquares/MovingSquaresTest.h"
+#include "test/CubeRotation/CubeRotationTest.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
 #define TEXTURES_FILE_PATH "res/texture/download.jpg"
@@ -56,7 +57,6 @@ int main(void) {
 		// Setup Renderer
 		Renderer renderer;
 
-
 		// Setup ImGui
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -72,7 +72,7 @@ int main(void) {
 
 		test_menu->RegisterTest<test::TestClearColor>("Clear color");
 		test_menu->RegisterTest<test::MovingSquaresTest>("Moving squares");
-		
+		test_menu->RegisterTest<test::CubeRotationTest>("Cube rotation");
 		
 		// Setup logic
 

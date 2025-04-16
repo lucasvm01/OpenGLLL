@@ -1,7 +1,7 @@
 #include "Square.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
-#define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
+#define TEXTURES_FILE_PATH "res/texture/OMG.jpg"
 
 // TODO
 void Square::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)
@@ -9,10 +9,11 @@ void Square::SetPositionVertices(glm::vec3* vertices, unsigned int* indices)
 	m_mesh.SetVerticesProperties(vertices, indices);
 }
 
-void Square::DefineProperties(int op) {
+void Square::DefineProperties() {
 
 	m_mesh.m_VAO = std::make_unique<VertexArray>();
-	m_mesh.m_VBO = std::make_unique<VertexBuffer>(m_mesh.m_vertices, 4 * 2 * sizeof(glm::vec3)); 
+																// 4 coords * 2 coord types * size
+	m_mesh.m_VBO = std::make_unique<VertexBuffer>(m_mesh.m_vertices, 4 * 2 * sizeof(glm::vec3));
 	VertexBufferLayout layout;
 	layout.Push<glm::vec3>(1); // Coords
 	layout.Push<glm::vec3>(1); // ?? Local coords?
@@ -24,13 +25,11 @@ void Square::DefineProperties(int op) {
 
 	SetShader(SHADERS_FILE_PATH);
 
-	//m_shader->SetUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
+	m_shader->SetUniform4f("u_color", 0.8f, 0.3f, 0.8f, 1.0f);
 
-	if (op == 1)SetTexture(TEXTURES_FILE_PATH);
+	// SetTexture(TEXTURES_FILE_PATH);
 
-	else SetTexture("res/texture/OMG.jpg");
-
-	m_shader->SetUniform1i("u_texture", 0);
+	//m_shader->SetUniform1i("u_texture", 0);
 }
 
 void Square::Move() {

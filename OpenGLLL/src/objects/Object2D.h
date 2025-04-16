@@ -3,16 +3,11 @@
 #include "Object.h"
 
 class Object2D : public Object {
-	virtual void MovementPositiveZ() override {}
-	virtual void MovementNegativeZ() override {}
+	// Translation
+	virtual void TranslatePositiveZ() override {}
+	virtual void TranslateNegativeZ() override {}
 	
 	// Rotation
-	virtual void RotationPositiveX() override {}
-	virtual void RotationNegativeX() override {}
-
-	virtual void RotationPositiveY() override {}
-	virtual void RotationNegativeY() override {}
-
-	virtual void RotationPositiveZ() override {}
-	virtual void RotationNegativeZ() override {}
+	virtual void RotatePositiveZ() override {}
+	virtual void RotateNegativeZ() override {}
 };

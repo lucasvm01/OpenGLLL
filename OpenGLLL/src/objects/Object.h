@@ -21,30 +21,30 @@ public:
 		m_view(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))) {}
 
 	virtual void SetPositionVertices(glm::vec3* vertices, unsigned int* indices) = 0; // GetObject() from file?
-	virtual void DefineProperties(int op) = 0;
+	virtual void DefineProperties() = 0;
 
 	void SetShader(std::string shader_path);
 	void SetTexture(std::string texture_path);
 
 	// Translation
-	virtual void MovementPositiveY();
-	virtual void MovementNegativeY();
+	virtual void TranslatePositiveY();
+	virtual void TranslateNegativeY();
 
-	virtual void MovementPositiveX();
-	virtual void MovementNegativeX();
+	virtual void TranslatePositiveX();
+	virtual void TranslateNegativeX();
 
-	virtual void MovementPositiveZ();
-	virtual void MovementNegativeZ();
+	virtual void TranslatePositiveZ();
+	virtual void TranslateNegativeZ();
 
 	// Rotation
-	virtual void RotationPositiveX() = 0;
-	virtual void RotationNegativeX() = 0;
+	virtual void RotatePositiveX();
+	virtual void RotateNegativeX();
 
-	virtual void RotationPositiveY() = 0;
-	virtual void RotationNegativeY() = 0;
+	virtual void RotatePositiveY();
+	virtual void RotateNegativeY();
 	
-	virtual void RotationPositiveZ() = 0;
-	virtual void RotationNegativeZ() = 0;
+	virtual void RotatePositiveZ();
+	virtual void RotateNegativeZ();
 
 	void SetSpeed(float speed);
 

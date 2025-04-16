@@ -5,23 +5,42 @@ test::CubeRotationTest::CubeRotationTest()
 	// Vertices
 	glm::vec3 vertices[] = {
 		// Front vertices
-		glm::vec3(-50.0f,-50.0f,-50.0f), glm::vec3(0.0f, 0.0f, 0.5f),
-		glm::vec3( 50.0f,-50.0f,-50.0f), glm::vec3(1.0f, 0.0f, 0.5f),
-		glm::vec3( 50.0f, 50.0f,-50.0f), glm::vec3(1.0f, 1.0f, 0.5f),
-		glm::vec3(-50.0f, 50.0f,-50.0f), glm::vec3(0.0f, 1.0f, 0.5f),
+		glm::vec3(-50.0f,-50.0f,-50.0f), glm::vec3(0.0f, 0.0f,-0.5f),
+		glm::vec3( 50.0f,-50.0f,-50.0f), glm::vec3(1.0f, 0.0f,-0.5f),
+		glm::vec3( 50.0f, 50.0f,-50.0f), glm::vec3(1.0f, 1.0f,-0.5f),
+		glm::vec3(-50.0f, 50.0f,-50.0f), glm::vec3(0.0f, 1.0f,-0.5f),
 		// Back vertices
-		glm::vec3(-50.0f,-50.0f, 50.0f),
-		glm::vec3( 50.0f,-50.0f, 50.0f),
-		glm::vec3( 50.0f, 50.0f, 50.0f),
-		glm::vec3(-50.0f, 50.0f, 50.0f),
+		glm::vec3(-50.0f,-50.0f, 50.0f), glm::vec3(0.0f, 0.0f, 0.5f),
+		glm::vec3( 50.0f,-50.0f, 50.0f), glm::vec3(1.0f, 0.0f, 0.5f),
+		glm::vec3( 50.0f, 50.0f, 50.0f), glm::vec3(1.0f, 1.0f, 0.5f),
+		glm::vec3(-50.0f, 50.0f, 50.0f), glm::vec3(0.0f, 1.0f, 0.5f),
 	};
 
 	// Indices of positions in order of drawing
 	unsigned int indices[] = {
+		// Front face triangles
 		0, 1, 2,
-		2, 3, 0
+		2, 3, 0,
+		// Right face triangles
+		3, 2, 6,
+		6, 7, 3,
+		// Left face triangles
+		4, 5, 1,
+		1, 0, 4,
+		// Up face triangles
+		1, 5, 6,
+		6, 2, 1,
+		// Down face triangles
+		0, 4, 7,
+		7, 3, 0,
+		// Back face triangles
+		7, 6, 5,
+		5, 4, 7,
 	};
 
+	CubeA.SetPositionVertices(vertices, indices);
+
+	CubeA.DefineProperties();
 }
 
 void test::CubeRotationTest::OnUpdate(float deltaTime) {
@@ -29,7 +48,27 @@ void test::CubeRotationTest::OnUpdate(float deltaTime) {
 }
 
 void test::CubeRotationTest::OnRender() {
+	GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
+	GLCall(glClear(GL_COLOR_BUFFER_BIT));
+
+	// Clear window - first because of first frame
+	m_renderer.Clear();
+
+	// Loop logic
+
+	m_keyHandler.KeyCallback();
+
+	{
+		CubeA.m_shader->Bind();
+		//CubeA.m_texture->Bind();
+
+		CubeA.Move();
+
+		CubeA.Draw(m_renderer);
+	}
 }
 
 void test::CubeRotationTest::OnImGuiRender() {
+	ImGui::SliderFloat3("Translation A: ", &CubeA.m_translation.x, 0.0f, 960.0f);
+	ImGui::Text("AVG Framerate: ¨.3f ms/f (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 }

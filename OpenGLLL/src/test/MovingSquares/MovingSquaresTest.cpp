@@ -21,11 +21,8 @@ namespace test {
 		SquareA.SetPositionVertices(vertices, indices);
 		SquareB.SetPositionVertices(vertices, indices);
 
-		SquareA.DefineProperties(1);
-		SquareB.DefineProperties(2);
-	}
-
-	void MovingSquaresTest::OnUpdate(float deltaTime) {
+		SquareA.DefineProperties();
+		SquareB.DefineProperties();
 	}
 
 	void MovingSquaresTest::OnRender() {
@@ -42,23 +39,23 @@ namespace test {
 		// Square A
 		{
 			SquareA.m_shader->Bind();
-			SquareA.m_texture->Bind();
+			// SquareA.m_texture->Bind();
 
 			SquareA.SetSpeed(m_speed);
 
 			for (int key : m_keyHandler.PressedKeys()) {
 				switch (key) {
 				case GLFW_KEY_W:
-					SquareA.MovementPositiveY();
+					SquareA.TranslatePositiveY();
 					break;
 				case GLFW_KEY_S:
-					SquareA.MovementNegativeY();
+					SquareA.TranslateNegativeY();
 					break;
 				case GLFW_KEY_A:
-					SquareA.MovementNegativeX();
+					SquareA.TranslateNegativeX();
 					break;
 				case GLFW_KEY_D:
-					SquareA.MovementPositiveX();
+					SquareA.TranslatePositiveX();
 					break;
 				}
 			}
@@ -72,23 +69,23 @@ namespace test {
 		// SquareB
 		{
 			SquareB.m_shader->Bind();
-			SquareB.m_texture->Bind();
+			//SquareB.m_texture->Bind();
 
 			SquareB.SetSpeed(m_speed);
 
 			for (int key : m_keyHandler.PressedKeys()) {
 				switch (key) {
 				case GLFW_KEY_UP:
-					SquareB.MovementPositiveY();
+					SquareB.TranslatePositiveY();
 					break;
 				case GLFW_KEY_DOWN:
-					SquareB.MovementNegativeY();
+					SquareB.TranslateNegativeY();
 					break;
 				case GLFW_KEY_LEFT:
-					SquareB.MovementNegativeX();
+					SquareB.TranslateNegativeX();
 					break;
 				case GLFW_KEY_RIGHT:
-					SquareB.MovementPositiveX();
+					SquareB.TranslatePositiveX();
 					break;
 				}
 			}
