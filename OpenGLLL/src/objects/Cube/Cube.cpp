@@ -62,21 +62,4 @@ void Cube::SetupProjection() {
 		0,				0,   z,			1,
 		0,				0,  -zNear * z, 0
 	);
-
-	/*
-	
-	angle = (50 * PI / 180) * 0.5;
-	zfar = 1000;
-	znear = 0.1;
-	* 
-	a = winWidth / winHeight;
-	fov = 1 / (tan(angle) / 2);
-	q = zfar / (zfar - znear);
-
-	proj = [[a * fov, 0, 0, 0],
-		[0, fov, 0, 0],
-		[0, 0, q, 1],
-		[0, 0, -znear * q, 0]];
-	*/
-
 }
