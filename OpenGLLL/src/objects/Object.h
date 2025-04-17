@@ -18,6 +18,7 @@ class Object {
 public:
 	Object() : 
 		m_shader(nullptr), m_texture(nullptr), m_facing_angles(glm::vec3(1.0f)),
+		m_rotate_x(false), m_rotate_y(false), m_rotate_z(false),
 		m_proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f)),
 		m_view(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))) {}
 
@@ -26,6 +27,8 @@ public:
 
 	void SetShader(std::string shader_path);
 	void SetTexture(std::string texture_path);
+
+	inline void SetSpeed(float speed) { m_speed = speed; }
 
 	// Translation
 	virtual void TranslatePositiveY();
@@ -47,7 +50,16 @@ public:
 	virtual void RotatePositiveZ(float step);
 	virtual void RotateNegativeZ(float step);
 
-	void SetSpeed(float speed);
+
+	// Set rotations
+	inline void SetRotationX()  { m_rotate_x = true; }
+	inline void StopRotationX() { m_rotate_x = false; }
+
+	inline void SetRotationY()  { m_rotate_y = true; }
+	inline void StopRotationY() { m_rotate_y = false; }
+
+	inline void SetRotationZ()  { m_rotate_z = true; }
+	inline void StopRotationZ() { m_rotate_z = false; }
 
 	virtual void Move() = 0;
 	virtual void Rotate(float time);
@@ -61,6 +73,10 @@ public:
 
 	glm::vec3 m_translation;
 	float m_speed;
+
+	bool m_rotate_x;
+	bool m_rotate_y;
+	bool m_rotate_z;
 
 	glm::vec3 m_facing_angles;
 

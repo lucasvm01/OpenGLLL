@@ -1,7 +1,7 @@
 #include "Cube.h"
 
 #define SHADERS_FILE_PATH "res/shader/Basic.shader"
-#define TEXTURES_FILE_PATH "res/texture/Cleiton.jpg"
+#define TEXTURES_FILE_PATH "res/texture/gpu.jpg"
 
 // Setup - Change to Object class implementation?
 void Cube::SetPositionVertices(glm::vec3* vertices, unsigned int* indices) {
@@ -33,7 +33,9 @@ void Cube::DefineProperties() {
 
 void Cube::Move() {
 	// Setup model matrix
-	glm::mat4 model = m_rotation * glm::translate(glm::mat4(1.0f), m_translation);
+	glm::mat4 model = glm::translate(glm::mat4(1.0f), m_translation);
+
+	model = model * m_rotation;
 
 	// Setup mvp matrix
 	glm::mat4 mvp = m_proj * m_view * model;

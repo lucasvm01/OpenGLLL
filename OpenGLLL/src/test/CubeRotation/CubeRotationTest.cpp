@@ -41,11 +41,12 @@ test::CubeRotationTest::CubeRotationTest()
 	CubeA.SetPositionVertices(vertices, indices);
 
 	CubeA.DefineProperties();
-
 }
 
 void test::CubeRotationTest::OnUpdate(float deltaTime) {
-	m_elapsed_time += deltaTime;
+	if (CubeA.m_rotate_x || CubeA.m_rotate_y || CubeA.m_rotate_z)
+		m_elapsed_time += deltaTime;
+	else m_elapsed_time = 0;
 
 	CubeA.Rotate(m_elapsed_time);
 }
@@ -87,6 +88,20 @@ void test::CubeRotationTest::OnRender() {
 			case GLFW_KEY_DOWN:
 				CubeA.TranslateNegativeZ();
 				break;
+			case GLFW_KEY_Z:
+				CubeA.SetRotationZ();
+				break;
+			case GLFW_KEY_X:
+				CubeA.SetRotationX();
+				break;
+			case GLFW_KEY_C:
+				CubeA.SetRotationY();
+				break;
+			case GLFW_KEY_P:
+				CubeA.StopRotationX();
+				CubeA.StopRotationY();
+				CubeA.StopRotationZ();
+				break;
 			}
 		}
 
@@ -98,5 +113,6 @@ void test::CubeRotationTest::OnRender() {
 
 void test::CubeRotationTest::OnImGuiRender() {
 	ImGui::SliderFloat3("Translation A: ", &CubeA.m_translation.x, 0.0f, 960.0f);
+	ImGui::SliderFloat("Speed: ", &m_speed, 0.0f, 50.0f);
 	ImGui::Text("AVG Framerate: ¨.3f ms/f (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 }

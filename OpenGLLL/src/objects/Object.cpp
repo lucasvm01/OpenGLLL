@@ -61,52 +61,39 @@ void Object::RotateNegativeZ(float step) {
 }
 
 
-void Object::SetSpeed(float speed) {
-	m_speed = speed;
-}
-
-
 void Object::Rotate(float time) {
+	glm::mat4 rotationZ = glm::mat4(1);
+	glm::mat4 rotationX = glm::mat4(1);
+	glm::mat4 rotationY = glm::mat4(1);
+
 	// Rotation in Z
-	/*
-	m_rotation = glm::mat4(
+	if (m_rotate_z)
+	rotationZ = glm::mat4(
 		glm::cos(time),-glm::sin(time), 0, 0,
 		glm::sin(time), glm::cos(time), 0, 0,
 		0,			    0,				1, 0,
 		0,				0,				0, 1
-	);*/
+	);
 	
 	// Rotation in X
-	
-	m_rotation = glm::mat4(
+	if(m_rotate_x)
+	rotationX = glm::mat4(
 		1,			    0,				0, 0,
 		0, glm::cos(time),-glm::sin(time), 0,
 		0, glm::sin(time), glm::cos(time), 0,
 		0,				0,				0, 1
 	);
-	
 
 	// Rotation in Y
-	/*
-	m_rotation = glm::mat4(
+	if(m_rotate_y)
+	rotationY = glm::mat4(
 		glm::cos(time), 0,-glm::sin(time), 0,
 		0,			    1,				0, 0,
 		glm::sin(time), 0, glm::cos(time), 0,
 		0,				0,				0, 1
 	);
-	*/
 	
-	/*
-	matRotZ = [[cos(time), -sin(time), 0, 0],
-		[sin(time), cos(time), 0, 0],
-		[0, 0, 1, 0],
-		[0, 0, 0, 1]];
-
-	matRotX = [[1, 0, 0, 0],
-		[0, cos(time / 2), -sin(time / 2), 0],
-		[0, sin(time / 2), cos(time / 2), 0],
-		[0, 0, 0, 1]];*/
-
+	m_rotation = rotationX * rotationY * rotationZ;
 }
 
 void Object::Draw(Renderer renderer)
